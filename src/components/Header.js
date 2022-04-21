@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Navbar, NavbarBrand, Nav, NavItem, NavbarText } from "reactstrap";
+import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTrashCan,
   faFilePdf,
-  faFileArrowDown,
+  // faFileArrowDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { connect } from "react-redux";
@@ -34,7 +34,7 @@ function Header(props) {
     time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes()
   }:${time.getSeconds() < 10 ? "0" + time.getSeconds() : time.getSeconds()} `;
 
-  // This could be replaced by props.total
+  // This might be replaced by props.total
   let totalArea = 0;
   let i = 0;
   while (i < props.cards.length) {
@@ -69,7 +69,6 @@ function Header(props) {
               `total: ${Number(e.area).toFixed(2)}${unit}²`,
             ],
           ]);
-          break;
         case "circle":
           return (result = [
             ...result,
@@ -82,7 +81,6 @@ function Header(props) {
               `total: ${Number(e.area).toFixed(2)}${unit}²`,
             ],
           ]);
-          break;
         case "square":
           return (result = [
             ...result,
@@ -95,7 +93,6 @@ function Header(props) {
               `total: ${Number(e.area).toFixed(2)}${unit}²`,
             ],
           ]);
-          break;
         case "rectangle":
           return (result = [
             ...result,
@@ -108,7 +105,6 @@ function Header(props) {
               `total: ${Number(e.area).toFixed(2)}${unit}²`,
             ],
           ]);
-          break;
         case "triangle":
           return (result = [
             ...result,
@@ -121,7 +117,6 @@ function Header(props) {
               `total: ${Number(e.area).toFixed(2)}${unit}²`,
             ],
           ]);
-          break;
         case "trapezoid":
           return (result = [
             ...result,
@@ -134,7 +129,8 @@ function Header(props) {
               `total: ${Number(e.area).toFixed(2)}${unit}²`,
             ],
           ]);
-          break;
+        default:
+          return [...result];
       }
     });
 
@@ -193,13 +189,16 @@ function Header(props) {
               `${props.paint.coverage}${unit}²/L`,
               `${props.paint.coat}`,
               {
-                text: `${props.paint.coverage > 0 ? Number((Number(totalArea)/props.paint.coverage)*props.paint.coat).toFixed(2) : 0}L`,
-                // text: `${Number(props.paint.volume).toFixed(2)}L`,
+                text: `${
+                  props.paint.coverage > 0
+                    ? Number(
+                        (Number(totalArea) / props.paint.coverage) *
+                          props.paint.coat
+                      ).toFixed(2)
+                    : 0
+                }L`,
                 style: "subheader",
               },
-              // {volume > 0
-              // ? `Requires: ${Number((Number(props.surface)/paintYield)*coat).toFixed(2)}L`
-              // : "Enter data or Refresh "}
             ],
           ],
         },
@@ -221,9 +220,6 @@ function Header(props) {
     defaultStyle: {
       // alignment: 'justify'
     },
-    // images: {
-    //     sampleImage: 'data:image/jpeg;base64, /9j/
-    // }
   };
 
   const [exportPDF, setExportPDF] = useState(false);
@@ -259,15 +255,13 @@ function Header(props) {
       </NavbarBrand>
 
       <Nav>
-        <div style={{ marginTop: "5px", cursor: "pointer" }}
-        onClick={pdfExported}
+        <div
+          style={{ marginTop: "5px", cursor: "pointer" }}
+          onClick={pdfExported}
         >
           Export as
         </div>
-        <NavItem
-          className="ms-2 me-5"
-          title="Create a PDF"
-        >
+        <NavItem className="ms-2 me-5" title="Create a PDF">
           <span
             onClick={pdfExported}
             style={{ float: "left", color: `${pdfColor}`, cursor: "pointer" }}
@@ -330,7 +324,6 @@ function Header(props) {
 }
 
 function mapStateToProps(state) {
-  // console.log("HDR Drawing ", state.drawing)
   return {
     cards: state.shapes,
     unit: state.units,

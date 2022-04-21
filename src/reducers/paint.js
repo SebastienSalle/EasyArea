@@ -1,4 +1,4 @@
-export default function (
+export default function paintData(
   paintData = { volume: 0, coverage: 0, coat: 0 },
   action
 ) {

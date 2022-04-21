@@ -22,7 +22,7 @@ function ShapeCard(props) {
 
   //Create a card for each item
   let messageNoShape;
-  if (data.length == 0) {
+  if (data.length === 0) {
     messageNoShape = (
       <div style={{ color: "#1289A7" }}>Add a SHAPE to start</div>
     );
@@ -44,7 +44,7 @@ function ShapeCard(props) {
                   <CardTitle>
                     <Input
                       autoFocus
-                      placeholder={`Shape ${i + 1}` + ` ${e.idCard}`}
+                      placeholder={`Shape ${i + 1}`}
                       style={styles.title}
                       key={i}
                       name={e.name}
@@ -89,14 +89,12 @@ function ShapeCard(props) {
                       type="number"
                       placeholder="0.00"
                       onChange={(e) => {
-                        {
-                          props.onUpdateData({
-                            name: e.target.name,
-                            L: e.target.value,
-                            type: e.target.dataset.type,
-                            index: i,
-                          });
-                        }
+                        props.onUpdateData({
+                          name: e.target.name,
+                          L: e.target.value,
+                          type: e.target.dataset.type,
+                          index: i,
+                        });
                       }}
                       value={e.length}
                     />
@@ -107,7 +105,6 @@ function ShapeCard(props) {
             </CardBody>
           </Card>
         );
-        break;
       case "rectangle":
         return (
           <Card key={i} className="mb-2" style={styles.cards}>
@@ -167,14 +164,12 @@ function ShapeCard(props) {
                       type="number"
                       placeholder="0.00"
                       onChange={(e) => {
-                        {
-                          props.onUpdateData({
-                            name: e.target.name,
-                            L: e.target.value,
-                            type: e.target.dataset.type,
-                            index: i,
-                          });
-                        }
+                        props.onUpdateData({
+                          name: e.target.name,
+                          L: e.target.value,
+                          type: e.target.dataset.type,
+                          index: i,
+                        });
                       }}
                       value={e.length}
                     />
@@ -192,14 +187,12 @@ function ShapeCard(props) {
                       type="number"
                       placeholder="0.00"
                       onChange={(e) => {
-                        {
-                          props.onUpdateData({
-                            name: e.target.name,
-                            w: e.target.value,
-                            type: e.target.dataset.type,
-                            index: i,
-                          });
-                        }
+                        props.onUpdateData({
+                          name: e.target.name,
+                          w: e.target.value,
+                          type: e.target.dataset.type,
+                          index: i,
+                        });
                       }}
                       value={e.width}
                     />
@@ -210,7 +203,6 @@ function ShapeCard(props) {
             </CardBody>
           </Card>
         );
-        break;
       case "trapezoid":
         return (
           <Card key={i} className="mb-2" style={styles.cards}>
@@ -269,14 +261,12 @@ function ShapeCard(props) {
                       type="number"
                       placeholder="0.00"
                       onChange={(e) => {
-                        {
-                          props.onUpdateData({
-                            name: e.target.name,
-                            B: e.target.value,
-                            type: e.target.dataset.type,
-                            index: i,
-                          });
-                        }
+                        props.onUpdateData({
+                          name: e.target.name,
+                          B: e.target.value,
+                          type: e.target.dataset.type,
+                          index: i,
+                        });
                       }}
                       value={e.base}
                     />
@@ -294,14 +284,12 @@ function ShapeCard(props) {
                       type="number"
                       placeholder="0.00"
                       onChange={(e) => {
-                        {
-                          props.onUpdateData({
-                            name: e.target.name,
-                            b: e.target.value,
-                            type: e.target.dataset.type,
-                            index: i,
-                          });
-                        }
+                        props.onUpdateData({
+                          name: e.target.name,
+                          b: e.target.value,
+                          type: e.target.dataset.type,
+                          index: i,
+                        });
                       }}
                       value={e.oppositeBase}
                     />
@@ -319,14 +307,12 @@ function ShapeCard(props) {
                       type="number"
                       placeholder="0.00"
                       onChange={(e) => {
-                        {
-                          props.onUpdateData({
-                            name: e.target.name,
-                            h: e.target.value,
-                            type: e.target.dataset.type,
-                            index: i,
-                          });
-                        }
+                        props.onUpdateData({
+                          name: e.target.name,
+                          h: e.target.value,
+                          type: e.target.dataset.type,
+                          index: i,
+                        });
                       }}
                       value={e.height}
                     />
@@ -337,7 +323,6 @@ function ShapeCard(props) {
             </CardBody>
           </Card>
         );
-        break;
       case "triangle":
         return (
           <Card key={i} className="mb-2" style={styles.cards}>
@@ -396,14 +381,12 @@ function ShapeCard(props) {
                       type="number"
                       placeholder="0.00"
                       onChange={(e) => {
-                        {
-                          props.onUpdateData({
-                            name: e.target.name,
-                            B: e.target.value,
-                            type: e.target.dataset.type,
-                            index: i,
-                          });
-                        }
+                        props.onUpdateData({
+                          name: e.target.name,
+                          B: e.target.value,
+                          type: e.target.dataset.type,
+                          index: i,
+                        });
                       }}
                       value={e.base}
                     />
@@ -421,14 +404,12 @@ function ShapeCard(props) {
                       type="number"
                       placeholder="0.00"
                       onChange={(e) => {
-                        {
-                          props.onUpdateData({
-                            name: e.target.name,
-                            h: e.target.value,
-                            type: e.target.dataset.type,
-                            index: i,
-                          });
-                        }
+                        props.onUpdateData({
+                          name: e.target.name,
+                          h: e.target.value,
+                          type: e.target.dataset.type,
+                          index: i,
+                        });
                       }}
                       value={e.height}
                     />
@@ -439,7 +420,6 @@ function ShapeCard(props) {
             </CardBody>
           </Card>
         );
-        break;
       case "circle":
         return (
           <Card key={i} className="mb-2" style={styles.cards}>
@@ -498,14 +478,12 @@ function ShapeCard(props) {
                       type="number"
                       placeholder="0.00"
                       onChange={(e) => {
-                        {
-                          props.onUpdateData({
-                            name: e.target.name,
-                            r: e.target.value,
-                            type: e.target.dataset.type,
-                            index: i,
-                          });
-                        }
+                        props.onUpdateData({
+                          name: e.target.name,
+                          r: e.target.value,
+                          type: e.target.dataset.type,
+                          index: i,
+                        });
                       }}
                       value={e.radius}
                     />
@@ -516,7 +494,6 @@ function ShapeCard(props) {
             </CardBody>
           </Card>
         );
-        break;
       case "area":
         return (
           <Card key={i} className="mb-2" style={styles.cards}>
@@ -531,7 +508,7 @@ function ShapeCard(props) {
                   <CardTitle>
                     <Input
                       autoFocus
-                      placeholder={`${i + 1}: CustomArea ${e.idCard}`}
+                      placeholder={`${i + 1}: CustomArea`}
                       style={styles.title}
                       key={i}
                       name={e.name}
@@ -578,14 +555,12 @@ function ShapeCard(props) {
                       type="number"
                       placeholder="0.00"
                       onChange={(e) => {
-                        {
-                          props.onUpdateData({
-                            name: e.target.name,
-                            A: e.target.value,
-                            type: e.target.dataset.type,
-                            index: i,
-                          });
-                        }
+                        props.onUpdateData({
+                          name: e.target.name,
+                          A: e.target.value,
+                          type: e.target.dataset.type,
+                          index: i,
+                        });
                       }}
                       value={e.area}
                     />
@@ -596,7 +571,6 @@ function ShapeCard(props) {
             </CardBody>
           </Card>
         );
-        break;
       default:
         return (
           <Card className="mb-2" style={styles.cards}>
@@ -604,8 +578,8 @@ function ShapeCard(props) {
               <Row>
                 <Col sm="6">
                   <CardTitle>
-                    It seems there is a problem...Maybe you should reload the
-                    page
+                    It seems there is a problem... You should propbably reload
+                    the page
                   </CardTitle>
                 </Col>
               </Row>

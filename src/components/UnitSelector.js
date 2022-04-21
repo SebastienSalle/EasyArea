@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
 import { Container, Row, Col, Input, InputGroup, Label } from "reactstrap";
@@ -7,52 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenRuler } from "@fortawesome/free-solid-svg-icons";
 
 function UnitSelector(props) {
-  //const [unit, setUnit] = useState('')
-  //const [newUnit, setNewUnit] = useState('')
-  //const [selected, setSelected] = useState(false)
-  // console.log("UnitSelPROPS ",props)
-  // console.log("coeff ", props.units.coeff)
-
-  // const coeff = props.units.coeff
-  // const convertValue = () => {
-
-  //   console.log("PROPS-COEFF ", props.units.coeff)
-  // const convertedCards =
-  // props.cards.map((e,i)=> {
-  //   switch (e.type) {
-  //     case "area":
-  //       return (e.area*coeff);
-  //       break;
-
-  //     case "square":
-  //       return (e.length*coeff);
-  //       break;
-
-  //     case "circle":
-  //       return (e.radius*coeff);
-  //       break;
-
-  //     case "rectangle":
-  //       return ("rectangle");
-  //       break;
-
-  //     case "triangle":
-  //       return ("triangle");
-  //       break;
-
-  //     case "trapezoid":
-  //       return ("trapezoid");
-  //       break;
-
-  //     default :
-
-  //   }
-  // })
-
-  //}
-
-  //console.log("CARDS -- ",convertValue())
-
   return (
     <Container className=" mt-2">
       <InputGroup tag="fieldset" style={{ color: "#1B1464" }}>
@@ -80,8 +34,6 @@ function UnitSelector(props) {
               </Label>
             </InputGroup>
 
-            {/* <InputGroup check onChange={() =>props.onUnitChange('m')}>
-                <Label check style={{ cursor: "pointer"}} title="metre"> */}
             <InputGroup
               onChange={() => {
                 props.onUnitChange("m");
@@ -134,7 +86,6 @@ function mapDispatchToProps(dispatch) {
     onUnitChange: function (data) {
       console.log("UnitSel ", data);
       dispatch({ type: "selectUnit", u: data });
-      //dispatch({ type: "convert", u: data })
     },
     convertValue: function (u, newU) {
       dispatch({ type: "convert", currentUnit: u, newUnit: newU });

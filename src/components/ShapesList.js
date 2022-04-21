@@ -12,48 +12,31 @@ function ShapesList(props) {
     switch (e.type) {
       case "square":
         return Number(Math.pow(e.length, 2)).toFixed(2);
-        break;
       case "rectangle":
         return Number(e.length * e.width).toFixed(2);
-        break;
       case "trapezoid":
         return Number(
           ((Number(e.base) + Number(e.oppositeBase)) * e.height) / 2
         ).toFixed(2);
-        break;
       case "triangle":
         return Number((e.base * e.height) / 2).toFixed(2);
-        break;
       case "circle":
         return Number(Math.PI * Math.pow(e.radius, 2)).toFixed(2);
-        break;
       case "area":
         return Number(e.area).toFixed(2);
-        break;
       default:
         return "Choose a shape";
     }
   });
 
   let total = 0;
-  //const[total, setTotal]=useState(0);
 
   const combineArea = () => {
-    //let newTotal = total
     areas.map((area, i) => {
-      {
-        //let newTotal = total;
-        // Number((newTotal += Number(area)));
-        // return newTotal;
-        return Number((total += Number(area)));
-      }
+      return Number((total += Number(area)));
     });
     props.onUpdateTotal(total);
-    //setTotal(newTotal);
-    // console.log("AvantDispatch ",total)
-    //props.onUpdateTotal(newTotal)
     return total;
-    // return newTotal;
   };
 
   const [copied, setCopied] = useState(false);
@@ -81,7 +64,6 @@ function ShapesList(props) {
             }}
           >
             <CardHeader style={{ color: "#fff", backgroundColor: "#1B1464" }}>
-              {/* <TotalArea data={props.cards} unit={.name} /> */}
               <span
                 onClick={copy}
                 style={{
@@ -101,28 +83,13 @@ function ShapesList(props) {
                   icon={faCopy}
                 />
               </span>
-              {/* <Col xs='10'> */}
               <div style={{ marginTop: "5px" }}>
-                {/* Total Area: <span onChange={()=>{props.onUpdateTotal(total)}}>{total.toFixed(2)}</span> {props.unit.name}² */}
-                Total Surface Area:{" "}
-                {/* <span
-                  onChange={() => {
-                    props.onUpdateTotal();
-                  }}
-                > */}
-                {/* ERROR too many re-render - comment faire pour màj le total dans le store ?  */}
-                {/* {Number(combineArea(total)).toFixed(2)} */}
-                {Number(combineArea()).toFixed(2)}
-                {/* </span> */} {props.unit.name}²
-                {/* Total Area: {total.toFixed(2)} {props.unit.name}² */}
+                Total Surface Area: {Number(combineArea()).toFixed(2)}
+                {props.unit.name}²
               </div>
-              {/* </Col> */}
               <span
                 style={{
                   cursor: "pointer",
-                  // position: "absolute",
-                  // top: "10px",
-                  // right: "20px",
                 }}
               ></span>
             </CardHeader>
@@ -141,7 +108,6 @@ function ShapesList(props) {
 }
 
 function mapStateToProps(state) {
-  // console.log("Units ", state.units);
   return { cards: state.shapes, unit: state.units };
 }
 

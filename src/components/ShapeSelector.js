@@ -96,7 +96,6 @@ function ShapeSelector(props) {
               height="25px"
             />
           </Button>
-          {/* <br /> */}
           <Button
             onClick={() => {
               props.onAddClick({
@@ -179,13 +178,8 @@ const styles = {
 };
 
 function mapDispatchToProps(dispatch) {
-  // let newCount;
   return {
     onAddClick: function (data) {
-      console.log("ShapeSel ", data);
-      //newCount= idCount+1;
-      //setIdCount(newCount);
-      // console.log(idCount);
       dispatch({ type: "addShape", data: data });
     },
   };

@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import addingAreas from "../addingAreas";
+// import addingAreas from "../addingAreas";
 
 import {
-  CustomInput,
   Input,
   InputGroup,
   InputGroupText,
   Badge,
   Container,
   Row,
-  Col,
 } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPaintRoller,
-  faArrowRotateRight,
   faLayerGroup,
   faFillDrip,
 } from "@fortawesome/free-solid-svg-icons";
@@ -31,43 +28,16 @@ function PaintCalcutor(props) {
   const [paintYield, setPaintYield] = useState("");
 
   const [coat, setCoat] = useState("");
-  const [totalSurface, setTotalSurface] = useState(0);
-
-  console.log("PROPS PAINT ", props);
-
-  // let totalArea = 0;
-  // let i =0;
-  // while(i<props.cards.length){
-  //   totalArea += Number(props.cards[i].area);
-  //   i++
-  // }
-  // console.log("TOTAL-AREA_to_PAINT ", totalArea, "OU ", props.total);
 
   const calculateVolume = (t, y, c) => {
     let newVolume;
     y > 0 ? (newVolume = (t / y) * c) : (newVolume = 0);
-    // y > 0 ? (newVolume = (t / y) * c) : (newVolume = 0);
-    //newVolume = ((t*1/y))*c
     setVolume(newVolume);
     props.handleVolumePaint(newVolume, y, c);
     return newVolume;
   };
-  console.log("VOLUME ", volume);
-  //let resultVolume = "";
-  // useEffect(() => {
-  //   if(totalSurface != props.surface){console.log("HOHO!")}else{console.log("YEAH!")}
-  //   //calculateVolume(props.surface, paintYield, coat);
-  //   //volume > 0 ? resultVolume = `Requires: ${Number(volume).toFixed(2)} L` : resultVolume = "Enter data or Refresh "
-  // }, []);
-
-  //---
 
   const settings = () => {
-    if (totalSurface != props.surface) {
-      console.log("HOHO!");
-    } else {
-      console.log("YEAH!");
-    }
     if (display) {
       return (
         <Row>
@@ -85,15 +55,8 @@ function PaintCalcutor(props) {
                 placeholder="10"
                 min="1"
                 onChange={(e) => {
-                  {
-                    setPaintYield(e.target.value);
-                    calculateVolume(
-                      //totalArea,
-                      props.surface,
-                      e.target.value,
-                      coat
-                    );
-                  }
+                  setPaintYield(e.target.value);
+                  calculateVolume(props.surface, e.target.value, coat);
                 }}
               />
               <InputGroupText>{props.unit.name}²/L</InputGroupText>
@@ -112,16 +75,8 @@ function PaintCalcutor(props) {
               placeholder="1"
               min="1"
               onChange={(e) => {
-                {
-                  setCoat(e.target.value);
-                  calculateVolume(
-                    //combineArea(cards),
-                    // totalArea,
-                    props.surface,
-                    paintYield,
-                    e.target.value
-                  );
-                }
+                setCoat(e.target.value);
+                calculateVolume(props.surface, paintYield, e.target.value);
               }}
             />
             <Badge
@@ -133,29 +88,11 @@ function PaintCalcutor(props) {
                 width: "100%",
               }}
             >
-              {/* <FontAwesomeIcon
-                style={{
-                  marginRight: "5px",
-                  cursor: "pointer",
-                  float: "left",
-                }}
-                icon={faArrowRotateRight}
-                onClick={() => {
-                  calculateVolume(
-                    //combineArea(cards)
-                    //totalArea,
-                    props.surface,
-                    paintYield,
-                    coat
-                  );
-                }}
-              /> */}
-              {/* {resultVolume} */}
-              
               {volume > 0
-                ? `Requires: ${Number((Number(props.surface)/paintYield)*coat).toFixed(2)}L`
+                ? `Requires: ${Number(
+                    (Number(props.surface) / paintYield) * coat
+                  ).toFixed(2)}L`
                 : "Enter data or Refresh "}
-              {/* {console.log((combineArea(cards) / paintYield) * coat)} */}
             </Badge>
           </div>
         </Row>
@@ -176,24 +113,17 @@ function PaintCalcutor(props) {
           icon={faPaintRoller}
         />
         Paint project
-        {/* <div className='custom-control custom-switch'> */}
         <Input
           onClick={() => {
             setDisplay(!display);
             setCoat(0);
             setPaintYield(0);
             setVolume(0);
-            props.handleVolumePaint(0, 0, 0)
+            props.handleVolumePaint(0, 0, 0);
           }}
           id="switchPaint"
-          type="checkbox" //checked
-          // style={{
-          // marginLeft:"5px",
-          // }}
+          type="checkbox"
           style={styles.switchButton}
-          //className='custom-control-input'
-          //id='customSwitches'
-          //readOnly
         />
       </legend>
       {settings()}
@@ -204,12 +134,6 @@ function PaintCalcutor(props) {
 const styles = {
   switchButton: {
     marginLeft: "5px",
-    //size: "sm",
-    //color: "danger",
-    // backgroundColor: "#A3CB38",
-    // width: "50px",
-    // maxWidth: `30%`,
-    // minWidth: "15%",
   },
 };
 

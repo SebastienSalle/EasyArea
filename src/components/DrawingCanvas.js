@@ -16,7 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePen, faHandsBubbles } from "@fortawesome/free-solid-svg-icons";
 
 function DrawingCanvas(props) {
-  const [penColor, setPenColor] = useState("#fff"); //"#1B1464"
+  const [penColor, setPenColor] = useState("#fff");
 
   const [clean, setClean] = useState(false);
   const cleanColor = clean ? "#ED4C67" : "#fff";
@@ -46,32 +46,22 @@ function DrawingCanvas(props) {
     let isPainting = false;
 
     let lineWidth = 3;
-    let startX;
-    let startY;
 
     toolbar.addEventListener("click", (e) => {
-      //console.log("CLICK-Toolbar + target", e.target);
       if (e.target.id === "clear") {
-        //console.log("CLICK-clear");
         ctx.clearRect(0, 0, canvasCard.width, canvasCard.height);
         props.onClear();
         cleaning();
       }
     });
-    // console.log(
-    //   "CLEAR-RECT ",
-    //   ctx.clearRect(canvasOffsetX, canvasOffsetY, canvas.width, canvas.heigth)
-    // );
 
     toolbar.addEventListener("change", (e) => {
-      //console.log("Listen-Toolbar-Change");
       if (e.target.id === "stroke") {
         ctx.strokeStyle = e.target.value;
       }
 
       if (e.target.id === "lineWidth") {
         lineWidth = e.target.value;
-        //console.log("LINE-W ", lineWidth);
       }
     });
 
@@ -79,9 +69,7 @@ function DrawingCanvas(props) {
       if (!isPainting) {
         return;
       }
-      //console.log("CTXLINE-W-AVANT ", ctx.lineWidth);
       ctx.lineWidth = lineWidth;
-      //console.log("CTXLINE-W-APRES ", ctx.lineWidth);
       ctx.lineCap = "round";
 
       ctx.lineTo(e.clientX - canvasOffsetX, e.clientY - canvasOffsetY);
@@ -90,20 +78,18 @@ function DrawingCanvas(props) {
 
     canvas.addEventListener("mousedown", (e) => {
       isPainting = true;
-      startX = e.clientX;
-      startY = e.clientY;
     });
 
     canvas.addEventListener("mouseup", (e) => {
       isPainting = false;
       ctx.stroke();
       ctx.beginPath();
-      console.log("URL ",canvas.toDataURL());
-      props.onDrawing(canvas.toDataURL())
+      console.log("URL ", canvas.toDataURL());
+      props.onDrawing(canvas.toDataURL());
     });
 
     canvas.addEventListener("mousemove", draw);
-  }, []);
+  }, [props]);
 
   // ------
   return (
@@ -202,9 +188,9 @@ function mapDispatchToProps(dispatch) {
     },
     onClear: function (url) {
       console.log("ClearedURL ", url);
-      dispatch({ type: "clearDrawing"})
+      dispatch({ type: "clearDrawing" });
     },
   };
 }
 
-export default connect(null, mapDispatchToProps) (DrawingCanvas);
+export default connect(null, mapDispatchToProps)(DrawingCanvas);
