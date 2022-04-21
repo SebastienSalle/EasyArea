@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 //import logo from "./logo.svg";
 import "./App.css";
@@ -25,16 +25,12 @@ const store = createStore(
 );
 
 function App() {
-  //const canvasCard = useRef();
-
   return (
     <Provider store={store}>
       <div>
         <Header />
         <Row style={{ backgroundColor: "#e9e9e9" }}>
-          <Col lg="6" 
-          //ref={canvasCard}
-          >
+          <Col lg="6">
             <DrawingCanvas />
           </Col>
 
@@ -66,12 +62,12 @@ function App() {
           </Col>
           <Col className="text-center mb-3" style={{fontSize:"10px"}}>
             Created by{" "}
-            <a href="https://www.linkedin.com/in/sebastien-salle-ab15058a/" target="_blank">
+            <a href="https://www.linkedin.com/in/sebastien-salle-ab15058a/" target="_blank" rel="noreferrer">
               Sébastien Sallé
             </a>{" "},
-            inspired by <a href="https://youtu.be/9fquspMTSbs" target="_blank">EasyExpertise Project</a>.
+            inspired by <a href="https://youtu.be/9fquspMTSbs" target="_blank" rel="noreferrer">EasyExpertise Project</a>.
             <br/>
-            EasyArea is an <a href="https://github.com/SebastienSalle/EasyArea.git" target="_blank">open source project</a>
+            EasyArea is an <a href="https://github.com/SebastienSalle/EasyArea.git" target="_blank" rel="noreferrer">open source project</a>
           </Col>
         </Row>
       </div>

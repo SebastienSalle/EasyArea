@@ -43,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "author": "sebastien-salle",
+  "engines" : {
+    "node": "v16.13.1"
   }
 }
