@@ -133,7 +133,7 @@ function PaintCalcutor(props) {
                 width: "100%",
               }}
             >
-              <FontAwesomeIcon
+              {/* <FontAwesomeIcon
                 style={{
                   marginRight: "5px",
                   cursor: "pointer",
@@ -149,10 +149,11 @@ function PaintCalcutor(props) {
                     coat
                   );
                 }}
-              />
+              /> */}
               {/* {resultVolume} */}
+              
               {volume > 0
-                ? `Requires: ${Number(volume).toFixed(2)}L`
+                ? `Requires: ${Number((Number(props.surface)/paintYield)*coat).toFixed(2)}L`
                 : "Enter data or Refresh "}
               {/* {console.log((combineArea(cards) / paintYield) * coat)} */}
             </Badge>
@@ -179,6 +180,10 @@ function PaintCalcutor(props) {
         <Input
           onClick={() => {
             setDisplay(!display);
+            setCoat(0);
+            setPaintYield(0);
+            setVolume(0);
+            props.handleVolumePaint(0, 0, 0)
           }}
           id="switchPaint"
           type="checkbox" //checked

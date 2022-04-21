@@ -166,6 +166,7 @@ export default function (shapes = [], action) {
     return newShapes;
   } else if (action.type === "convert") {
     const newShapes = [...shapes];
+    
     const eachShape = (coeff) => {
       newShapes.map((shape, i) => {
         switch (shape.type) {

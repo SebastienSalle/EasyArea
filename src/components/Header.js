@@ -193,9 +193,13 @@ function Header(props) {
               `${props.paint.coverage}${unit}²/L`,
               `${props.paint.coat}`,
               {
-                text: `${Number(props.paint.volume).toFixed(2)}L`,
+                text: `${props.paint.coverage > 0 ? Number((Number(totalArea)/props.paint.coverage)*props.paint.coat).toFixed(2) : 0}L`,
+                // text: `${Number(props.paint.volume).toFixed(2)}L`,
                 style: "subheader",
               },
+              // {volume > 0
+              // ? `Requires: ${Number((Number(props.surface)/paintYield)*coat).toFixed(2)}L`
+              // : "Enter data or Refresh "}
             ],
           ],
         },
@@ -226,10 +230,6 @@ function Header(props) {
   const pdfColor = exportPDF ? "#A3CB38" : "#fff";
 
   const pdfExported = () => {
-    //async
-    // await
-    // console.log("PDF-Ploup ");
-
     setExportPDF(true);
     pdfMake.createPdf(dd).download(`EasyArea-${timeMarker}`);
     setTimeout(() => {
@@ -237,18 +237,16 @@ function Header(props) {
     }, 200);
   };
 
-  const [exportCSV, setExportCSV] = useState(false);
-  const csvColor = exportCSV ? "#A3CB38" : "#fff";
-  const csvExported = () => {
-    // async
-    // await
-    console.log("CSV-Ploup");
+  // const [exportCSV, setExportCSV] = useState(false);
+  // const csvColor = exportCSV ? "#A3CB38" : "#fff";
+  // const csvExported = () => {
+  //   console.log("CSV-Ploup");
 
-    setExportCSV(true);
-    setTimeout(() => {
-      setExportCSV(false);
-    }, 200);
-  };
+  //   setExportCSV(true);
+  //   setTimeout(() => {
+  //     setExportCSV(false);
+  //   }, 200);
+  // };
 
   return (
     <Navbar
@@ -261,10 +259,13 @@ function Header(props) {
       </NavbarBrand>
 
       <Nav>
-        <div style={{ marginTop: "5px" }}>Export as</div>
+        <div style={{ marginTop: "5px", cursor: "pointer" }}
+        onClick={pdfExported}
+        >
+          Export as
+        </div>
         <NavItem
           className="ms-2 me-5"
-          style={{ cursor: "pointer" }}
           title="Create a PDF"
         >
           <span
@@ -281,7 +282,7 @@ function Header(props) {
             />
           </span>
         </NavItem>
-        <NavItem
+        {/* <NavItem
           className="ms-2 me-5"
           style={{ cursor: "pointer" }}
           title="Create a CSV file"
@@ -299,14 +300,14 @@ function Header(props) {
               icon={faFileArrowDown}
             />
           </span>
-        </NavItem>
+        </NavItem> */}
 
-        <NavItem className="ms-4" title="Clear all">
+        <NavItem className="ms-5 me-5" title="Clear all">
           <a href="/" style={{ color: "#fff", textDecoration: "none" }}>
             <span
               style={{
                 position: "absolute",
-                right: "10px",
+                right: "40px",
                 float: "left",
                 cursor: "pointer",
               }}

@@ -71,7 +71,7 @@ function ShapeCard(props) {
                 <Col>
                   <img
                     src="square.png"
-                    alt="square"
+                    alt="square - L for length"
                     name="square"
                     width="25%"
                     style={{ marginLeft: "20px" }}
@@ -150,7 +150,7 @@ function ShapeCard(props) {
                 <Col>
                   <img
                     src="rectangle.png"
-                    alt="rectangle"
+                    alt="rectangle - L for Length, w for width"
                     name="rectangle"
                     width="50%"
                   />
@@ -252,7 +252,7 @@ function ShapeCard(props) {
                 <Col>
                   <img
                     src="trapezoid.png"
-                    alt="trapezoid"
+                    alt="trapezoid - B for base, b for its opposite base, h for height"
                     name="trapezoid"
                     width="50%"
                   />
@@ -379,7 +379,7 @@ function ShapeCard(props) {
                 <Col>
                   <img
                     src="triangle.png"
-                    alt="triangle"
+                    alt="triangle - B for base, h for height"
                     name="triangle"
                     width="40%"
                   />
@@ -481,7 +481,7 @@ function ShapeCard(props) {
                 <Col>
                   <img
                     src="circle.png"
-                    alt="circle"
+                    alt="circle - r for radius"
                     name="circle"
                     width="25%"
                     style={{ marginLeft: "20px", marginBottom: "5px" }}

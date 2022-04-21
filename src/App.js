@@ -62,12 +62,14 @@ function App() {
             <ShapesList />
             {/* <ShapesList cards={cards} unit={unit} /> */}
           </Col>
-          <Col className="text-center mb-3">
+          <Col className="text-center mb-3" style={{fontSize:"10px"}}>
             Created by{" "}
-            <a href="https://github.com/SebastienSalle" target="_blank">
+            <a href="https://www.linkedin.com/in/sebastien-salle-ab15058a/" target="_blank">
               Sébastien Sallé
-            </a>{" "}
-            inspired by EasyExpertise Project
+            </a>{" "},
+            inspired by <a href="https://youtu.be/9fquspMTSbs" target="_blank">EasyExpertise Project</a>.
+            <br/>
+            EasyArea is an <a href="https://github.com/SebastienSalle/EasyArea.git" target="_blank">open source project</a>
           </Col>
         </Row>
       </div>
