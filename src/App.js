@@ -25,14 +25,16 @@ const store = createStore(
 );
 
 function App() {
-  const canvasCard = useRef();
+  //const canvasCard = useRef();
 
   return (
     <Provider store={store}>
       <div>
         <Header />
         <Row style={{ backgroundColor: "#e9e9e9" }}>
-          <Col lg="6" ref={canvasCard}>
+          <Col lg="6" 
+          //ref={canvasCard}
+          >
             <DrawingCanvas />
           </Col>
 

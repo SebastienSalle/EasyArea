@@ -1,70 +1,46 @@
+# About EasyArea
+
+This project was inspired by *EasyExpertise*, a ReactNative Mobile App developped in collaboration with three classmate for a graduation group project.
+
+EasyArea is a Web App and you only need a web browser to use it. So far, it is not connected to a DB and it does not use or store any private data.
+
+Its main purpose is to calculate surface area based on simple geometrical shapes setted by the user. It also provides an estimation of paint quantity required to cover the project surface area.
+
+## How to use this App?
+
+- ### Drawing a sketch
+
+Once loaded, ths screen should display **a canvas** to take some notes or draw a quick sketch by hand. You can change stroke width and color.
+
+- ### Setting unit
+
+By default, the measure unit is set on **'metre'** but you can convert the measures into **'cm'**, **'in'** or **'ft'**.
+
+- ### Setting measures
+
+You can then choose **a simple shape** and fill its measures in. For more complexe shapes or bigger project, you can add how many shapes as you wish. You can also delete any shape you don't need.
+The sixth button allows you to add a custom area.
+
+> Tips!
+>
+> You can deduce area surface (e.g. door or windows on walls) by setting **a negative measure**.
+> *If the negative space is a square, you should set a rectangle with negative length or width.*
+
+- ### Copying result
+
+At any time the calculated total surface area can be copied to the clipboard.
+
+- ### Setting Paint Project
+
+If you activate Paint Project you should set the **coverage rate** of your paint and the **number of coats** you need. It will return an estimation of the necessary paint quantity.
+
+- ### Printing results
+
+At any time you can print out your project. A pdf will be downloaded on your device containing your sketch, the surface area and its details and the paint quantity.
+
+> I hope it will be usefull for you!
+> Thank You for your attention!
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
