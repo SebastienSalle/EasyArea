@@ -250,7 +250,7 @@ function Header(props) {
       className="ps-2 pe-1"
     >
       <NavbarBrand style={{ color: "#fff" }} href="/">
-        <img src="./favicon.ico" width="30px" className="me-2" alt="logo" />
+        <img src="./logo76.png" width="30px" className="me-2" alt="logo" />
         EasyArea
       </NavbarBrand>
 
