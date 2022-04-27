@@ -15,7 +15,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePen, faHandsBubbles } from "@fortawesome/free-solid-svg-icons";
 
-function DrawingCanvas(props) {
+function DrawingPopup(props) {
   const [penColor, setPenColor] = useState("#fff");
 
   const [clean, setClean] = useState(false);
@@ -30,12 +30,12 @@ function DrawingCanvas(props) {
   console.log(window.pageXOffset, window.pageYOffset);
 
   useEffect(() => {
-    const canvas = document.getElementById("canvas");
+    const canvas = document.getElementById("canvasPopup");
     const canvasCard = document
-      .getElementById("canvasCard")
+      .getElementById("canvasCardPopup")
       .getBoundingClientRect();
 
-    const toolbar = document.getElementById("toolbar");
+    const toolbar = document.getElementById("toolbarPopup");
     const ctx = canvas.getContext("2d");
 
     const canvasOffsetX = canvasCard.left + window.pageXOffset;
@@ -49,7 +49,7 @@ function DrawingCanvas(props) {
     let lineWidth = 3;
 
     toolbar.addEventListener("click", (e) => {
-      if (e.target.id === "clear") {
+      if (e.target.id === "clearPopup") {
         ctx.clearRect(0, 0, canvasCard.width, canvasCard.height);
         props.onClear();
         cleaning();
@@ -57,11 +57,11 @@ function DrawingCanvas(props) {
     });
 
     toolbar.addEventListener("change", (e) => {
-      if (e.target.id === "stroke") {
+      if (e.target.id === "strokePopup") {
         ctx.strokeStyle = e.target.value;
       }
 
-      if (e.target.id === "lineWidth") {
+      if (e.target.id === "lineWidthPopup") {
         lineWidth = e.target.value;
       }
     });
@@ -77,11 +77,11 @@ function DrawingCanvas(props) {
       ctx.stroke();
     };
 
-    canvas.addEventListener("mousedown", (e) => {
+    canvas.addEventListener("pointerdown", (e) => {
       isPainting = true;
     });
 
-    canvas.addEventListener("mouseup", (e) => {
+    canvas.addEventListener("pointerup", (e) => {
       isPainting = false;
       ctx.stroke();
       ctx.beginPath();
@@ -89,7 +89,7 @@ function DrawingCanvas(props) {
       props.onDrawing(canvas.toDataURL());
     });
 
-    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("pointermove", draw);
   }, [props]);
 
   // ------
@@ -105,7 +105,7 @@ function DrawingCanvas(props) {
             }}
           >
             <CardHeader
-              id="toolbar"
+              id="toolbarPopup"
               style={{ color: "#fff", backgroundColor: "#1B1464" }}
               className="d-flex d-row align-items-center justify-content-between"
             >
@@ -121,7 +121,7 @@ function DrawingCanvas(props) {
                 />
 
                 <Input
-                  id="lineWidth"
+                  id="lineWidthPopup"
                   name="lineWidth"
                   type="number"
                   min={1}
@@ -134,7 +134,7 @@ function DrawingCanvas(props) {
                 />
 
                 <input
-                  id="stroke"
+                  id="strokePopup"
                   name="stroke"
                   type="color"
                   style={{ borderRadius: 5, marginLeft: "5px" }}
@@ -154,7 +154,7 @@ function DrawingCanvas(props) {
                   icon={faHandsBubbles}
                 />
                 <Button
-                  id="clear"
+                  id="clearPopup"
                   style={{
                     float: "right",
                     color: `${cleanColor}`,
@@ -167,10 +167,10 @@ function DrawingCanvas(props) {
             </CardHeader>
 
             <CardBody
-              id="canvasCard"
+              id="canvasCardPopup"
               style={{ padding: 0, cursor: "crosshair" }}
             >
-              <canvas id="canvas">
+              <canvas id="canvasPopup">
                 Sorry the canvas is not supported by your browser
               </canvas>
             </CardBody>
@@ -194,4 +194,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(DrawingCanvas);
+export default connect(null, mapDispatchToProps)(DrawingPopup);

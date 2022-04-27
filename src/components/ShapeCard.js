@@ -44,7 +44,8 @@ function ShapeCard(props) {
                   <CardTitle>
                     <Input
                       autoFocus
-                      placeholder={`Shape ${i + 1}`}
+                      tabIndex={1}
+                      placeholder={`Square ${i + 1}`}
                       style={styles.title}
                       key={i}
                       name={e.name}
@@ -61,14 +62,23 @@ function ShapeCard(props) {
                     />
                   </CardTitle>
                 </Col>
-                <Col sm="6">
+                <Col className="d-block d-md-none">
+                  <img
+                    src="square.png"
+                    alt="square - L for length"
+                    name="square"
+                    width="100%"
+                  />
+                </Col>
+                <Col xs="9" md="6">
                   <CardSubtitle style={styles.subTtl}>
                     Area: {Number(e.area).toFixed(2)} {props.unit}²
                   </CardSubtitle>
                 </Col>
+                
               </Row>
               <Row>
-                <Col>
+                <Col className="d-none d-md-block">
                   <img
                     src="square.png"
                     alt="square - L for length"
@@ -82,6 +92,7 @@ function ShapeCard(props) {
                     <InputGroupText>L</InputGroupText>
 
                     <Input
+                      tabIndex={2}
                       key={i}
                       name={e.name}
                       data-type={e.type}
@@ -120,7 +131,7 @@ function ShapeCard(props) {
                   <CardTitle>
                     <Input
                       autoFocus
-                      placeholder={`Shape ${i + 1}`}
+                      placeholder={`Rectangle ${i + 1}`}
                       style={styles.title}
                       key={i}
                       name={e.name}
@@ -137,14 +148,23 @@ function ShapeCard(props) {
                     />
                   </CardTitle>
                 </Col>
-                <Col sm="6">
+                <Col className="d-block d-md-none">
+                  <img
+                    src="rectangle.png"
+                    alt="rectangle - L for Length, w for width"
+                    name="rectangle"
+                    width="150%"
+                  />
+                </Col>
+                <Col xs="9" md="6">
                   <CardSubtitle style={styles.subTtl}>
                     Area: {Number(e.area).toFixed(2)} {props.unit}²
                   </CardSubtitle>
                 </Col>
+                
               </Row>
               <Row>
-                <Col>
+                <Col className="d-none d-md-block">
                   <img
                     src="rectangle.png"
                     alt="rectangle - L for Length, w for width"
@@ -217,7 +237,7 @@ function ShapeCard(props) {
                   <CardTitle>
                     <Input
                       autoFocus
-                      placeholder={`Shape ${i + 1}`}
+                      placeholder={`Trapezoid ${i + 1}`}
                       style={styles.title}
                       key={i}
                       name={e.name}
@@ -234,14 +254,23 @@ function ShapeCard(props) {
                     />
                   </CardTitle>
                 </Col>
-                <Col xs="12" sm="6">
+                <Col className="d-block d-md-none">
+                  <img
+                    src="trapezoid.png"
+                    alt="trapezoid - B for base, b for its opposite base, h for height"
+                    name="trapezoid"
+                    width="200%"
+                  />
+                </Col>
+                <Col xs="9" md="6">
                   <CardSubtitle style={styles.subTtl}>
                     Area: {Number(e.area).toFixed(2)} {props.unit}²
                   </CardSubtitle>
                 </Col>
+                
               </Row>
               <Row>
-                <Col>
+                <Col className="d-none d-md-block">
                   <img
                     src="trapezoid.png"
                     alt="trapezoid - B for base, b for its opposite base, h for height"
@@ -337,7 +366,7 @@ function ShapeCard(props) {
                   <CardTitle>
                     <Input
                       autoFocus
-                      placeholder={`Shape ${i + 1}`}
+                      placeholder={`Triangle ${i + 1}`}
                       style={styles.title}
                       key={i}
                       name={e.name}
@@ -354,14 +383,22 @@ function ShapeCard(props) {
                     />
                   </CardTitle>
                 </Col>
-                <Col sm="6">
+                <Col className="d-block d-md-none">
+                  <img
+                    src="triangle.png"
+                    alt="triangle - B for base, h for height"
+                    name="triangle"
+                    width="150%"
+                  />
+                </Col>
+                <Col xs="9" md="6">
                   <CardSubtitle style={styles.subTtl}>
                     Area: {Number(e.area).toFixed(2)} {props.unit}²
                   </CardSubtitle>
                 </Col>
               </Row>
               <Row>
-                <Col>
+                <Col className="d-none d-md-block">
                   <img
                     src="triangle.png"
                     alt="triangle - B for base, h for height"
@@ -434,7 +471,7 @@ function ShapeCard(props) {
                   <CardTitle>
                     <Input
                       autoFocus
-                      placeholder={`Shape ${i + 1}`}
+                      placeholder={`Circle ${i + 1}`}
                       style={styles.title}
                       key={i}
                       name={e.name}
@@ -451,14 +488,23 @@ function ShapeCard(props) {
                     />
                   </CardTitle>
                 </Col>
-                <Col sm="6">
+                <Col className="d-block d-md-none">
+                  <img
+                    src="circle.png"
+                    alt="circle - r for radius"
+                    name="circle"
+                    width="100%"
+                    style={{ marginBottom: "5px" }}
+                  />
+                </Col>
+                <Col xs="9" md="6">
                   <CardSubtitle style={styles.subTtl}>
                     Area: {Number(e.area).toFixed(2)} {props.unit}²
                   </CardSubtitle>
                 </Col>
               </Row>
               <Row>
-                <Col>
+                <Col className="d-none d-md-block">
                   <img
                     src="circle.png"
                     alt="circle - r for radius"
@@ -525,14 +571,23 @@ function ShapeCard(props) {
                     />
                   </CardTitle>
                 </Col>
-                <Col sm="6">
+                <Col className="d-block d-md-none">
+                  <FontAwesomeIcon
+                    style={{
+                      height: "20px",
+                      color: "#1289A7",
+                    }}
+                    icon={faCubesStacked}
+                  />
+                </Col>
+                <Col xs="9" md="6">
                   <CardSubtitle style={styles.subTtl}>
                     Area: {Number(e.area).toFixed(2)} {props.unit}²
                   </CardSubtitle>
                 </Col>
               </Row>
               <Row>
-                <Col>
+                <Col className="d-none d-md-block">
                   <FontAwesomeIcon
                     style={{
                       marginTop: "10px",

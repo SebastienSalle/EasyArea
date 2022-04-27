@@ -1,11 +1,10 @@
 import React from "react";
-
-//import logo from "./logo.svg";
-import "./App.css";
+// import "./App.css";
 import { Row, Col } from "reactstrap";
 
 import Header from "./components/Header";
 import DrawingCanvas from "./components/DrawingCanvas";
+//import DrawingPopup from "./components/DrawingPopup";
 import ShapesList from "./components/ShapesList";
 import ShapeSelector from "./components/ShapeSelector";
 import UnitSelector from "./components/UnitSelector";
@@ -30,36 +29,33 @@ function App() {
       <div>
         <Header />
         <Row style={{ backgroundColor: "#e9e9e9" }}>
-          <Col lg="6">
+          <Col lg="6" className="d-none d-lg-block">
             <DrawingCanvas />
           </Col>
 
           <Col lg="6">
             <Row>
-              <>
-                <Col xs="5" md="4" lg="2">
-                  <UnitSelector />
-                  {/* <UnitSelector onChangeParentUnit={souvenirParentUnit} /> */}
-                </Col>
-                <Col lg="5" className="d-none d-lg-block">
+                <Col>
                   <ShapeSelector />
-                  {/* <ShapeSelector handleClickParentShapes={souvenirParentShapes} /> */}
                 </Col>
-                <Col xs="5" className="d-block d-md-none d-lg-block">
-                  <PaintCalculator />
-                </Col>
-                <Col md="4" lg="6" className="d-block d-lg-none text-center">
-                  <ShapeSelector />
-                  {/* <ShapeSelector handleClickParentShapes={souvenirParentShapes} /> */}
-                </Col>
-              </>
-              <Col md="4" lg="6" className="d-none d-md-block d-lg-none">
-                <PaintCalculator />
-              </Col>
             </Row>
             <ShapesList />
             {/* <ShapesList cards={cards} unit={unit} /> */}
+            <Row>
+            <Col xs="5" >
+                  <UnitSelector />
+                  {/* <UnitSelector onChangeParentUnit={souvenirParentUnit} /> */}
+            </Col>
+            <Col  >
+              <PaintCalculator />
+            </Col>
+            </Row>
           </Col>
+          
+          {/* <Col lg="6" className="d-block d-lg-none">
+            <DrawingPopup />
+          </Col> */}
+
           <Col className="text-center mb-3" style={{ fontSize: "10px" }}>
             Created by{" "}
             <a

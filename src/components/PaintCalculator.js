@@ -92,7 +92,7 @@ function PaintCalcutor(props) {
                 ? `Requires: ${Number(
                     (Number(props.surface) / paintYield) * coat
                   ).toFixed(2)}L`
-                : "Enter data or Refresh "}
+                : "No data "}
             </Badge>
           </div>
         </Row>
