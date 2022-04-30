@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
+import { Navbar, NavbarBrand, Nav, NavItem, Input } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -34,13 +34,17 @@ function Header(props) {
     time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes()
   }:${time.getSeconds() < 10 ? "0" + time.getSeconds() : time.getSeconds()} `;
 
-  // This might be replaced by props.total
   let totalArea = 0;
   let i = 0;
   while (i < props.cards.length) {
     totalArea += Number(props.cards[i].area) * Number(props.cards[i].deduct);
     i++;
   }
+
+  const [projectName, setProjectName] = useState("");
+  const onProjectName = (pName) => {
+    props.handleProjectName(pName);
+  };
 
   const tableRows = () => {
     let result = [
@@ -139,9 +143,9 @@ function Header(props) {
   const dd = {
     info: {
       title:
-        props.paint.label === ""
+        props.name === ""
           ? `EasyArea-${timeMarker}`
-          : `EasyArea-${props.paint.label}-${timeMarker}`,
+          : `EasyArea-${props.name}-${timeMarker}`,
     },
     content: [
       {
@@ -151,7 +155,11 @@ function Header(props) {
           headerRows: 1,
           body: [
             [
-              { text: "EasyArea", style: "header" },
+              {
+                text:
+                  props.name === "" ? `EasyArea` : `EasyArea - ${props.name}`,
+                style: "header",
+              },
               { text: `${timeToPrint}`, alignment: "right" },
             ],
           ],
@@ -240,9 +248,9 @@ function Header(props) {
     pdfMake
       .createPdf(dd)
       .download(
-        props.paint.label === ""
+        props.name === ""
           ? `EasyArea-${timeMarker}`
-          : `EasyArea-${props.paint.label}-${timeMarker}`
+          : `EasyArea-${props.name}-${timeMarker}`
       );
     win.close();
     setTimeout(() => {
@@ -269,7 +277,20 @@ function Header(props) {
         <img src="./logo76.png" width="30px" className="me-2" alt="logo" />
         EasyArea
       </NavbarBrand>
-
+      <Nav>
+        <NavItem>
+          <Input
+            type="text"
+            placeholder="enter project name"
+            style={{ color: "#1289A7" }}
+            onChange={(e) => {
+              setProjectName(e.target.value);
+              onProjectName(e.target.value);
+            }}
+            value={projectName}
+          />
+        </NavItem>
+      </Nav>
       <Nav>
         <div
           style={{ marginTop: "5px", cursor: "pointer" }}
@@ -345,7 +366,19 @@ function mapStateToProps(state) {
     unit: state.units,
     drawing: state.drawing,
     paint: state.paintData,
+    name: state.name,
   };
 }
 
-export default connect(mapStateToProps, null)(Header);
+function mapDispatchToProps(dispatch) {
+  return {
+    handleProjectName: function (pName) {
+      dispatch({
+        type: "project",
+        value: pName,
+      });
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

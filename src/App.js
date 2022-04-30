@@ -10,6 +10,7 @@ import ShapeSelector from "./components/ShapeSelector";
 import UnitSelector from "./components/UnitSelector";
 import PaintCalculator from "./components/PaintCalculator";
 
+import name from "./reducers/name";
 import units from "./reducers/units";
 import shapes from "./reducers/shapes";
 import total from "./reducers/total";
@@ -20,7 +21,7 @@ import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 
 const store = createStore(
-  combineReducers({ units, shapes, total, drawing, paintData })
+  combineReducers({ name, units, shapes, total, drawing, paintData })
 );
 
 function App() {

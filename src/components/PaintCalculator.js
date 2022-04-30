@@ -43,17 +43,17 @@ function PaintCalcutor(props) {
 
   let volumeMessage = "";
   if (coat * paintYield !== 0 && Number(props.surface) === 0) {
-    volumeMessage = "What would you paint on?";
+    volumeMessage = "No Area to paint on";
   } else if (coat * paintYield === 0 && Number(props.surface) !== 0) {
     volumeMessage = "Paint data unavailable";
   } else if (volume === 0 && Number(props.surface) === 0) {
-    volumeMessage = "Enter Paint data please";
+    volumeMessage = "Enter Paint data";
   } else if (Number(props.surface) > 0) {
     volumeMessage = `Requires: ${Number(
       (Number(props.surface) / paintYield) * coat
     ).toFixed(2)}L`;
   } else if (Number(props.surface) < 0) {
-    volumeMessage = "You'll try to paint a negative surface";
+    volumeMessage = "Surface area can't be negative";
   } else {
     volumeMessage = "Nothing to paint on";
   }
@@ -134,6 +134,7 @@ function PaintCalcutor(props) {
                 marginBottom: "5px",
                 width: "100%",
               }}
+              onClick={() => window.scrollTo(0, 0)}
             >
               {volumeMessage}
             </Badge>
@@ -159,6 +160,7 @@ function PaintCalcutor(props) {
         <Input
           onClick={() => {
             setDisplay(!display);
+            setPaintName("");
             setCoat(0);
             setPaintYield(0);
             setVolume(0);
