@@ -11,19 +11,19 @@ function ShapesList(props) {
   const areas = props.cards.map((e, i) => {
     switch (e.type) {
       case "square":
-        return Number(Math.pow(e.length, 2)).toFixed(2);
+        return Number(Math.pow(e.length, 2)).toFixed(2) * e.deduct;
       case "rectangle":
-        return Number(e.length * e.width).toFixed(2);
+        return Number(e.length * e.width).toFixed(2) * e.deduct;
       case "trapezoid":
         return Number(
           ((Number(e.base) + Number(e.oppositeBase)) * e.height) / 2
-        ).toFixed(2);
+        ).toFixed(2) * e.deduct;
       case "triangle":
-        return Number((e.base * e.height) / 2).toFixed(2);
+        return Number((e.base * e.height) / 2).toFixed(2) * e.deduct;
       case "circle":
-        return Number(Math.PI * Math.pow(e.radius, 2)).toFixed(2);
+        return Number(Math.PI * Math.pow(e.radius, 2)).toFixed(2) * e.deduct;
       case "area":
-        return Number(e.area).toFixed(2);
+        return Number(e.area).toFixed(2) * e.deduct;
       default:
         return "Choose a shape";
     }

@@ -27,7 +27,6 @@ function DrawingPopup(props) {
       setClean(false);
     }, 200);
   };
-  console.log(window.pageXOffset, window.pageYOffset);
 
   useEffect(() => {
     const canvas = document.getElementById("canvasPopup");
@@ -85,7 +84,7 @@ function DrawingPopup(props) {
       isPainting = false;
       ctx.stroke();
       ctx.beginPath();
-      console.log("URL ", canvas.toDataURL());
+      
       props.onDrawing(canvas.toDataURL());
     });
 
@@ -184,11 +183,11 @@ function DrawingPopup(props) {
 function mapDispatchToProps(dispatch) {
   return {
     onDrawing: function (url) {
-      console.log("Drawing ", url);
+      
       dispatch({ type: "updateDrawing", url: url });
     },
     onClear: function (url) {
-      console.log("ClearedURL ", url);
+      
       dispatch({ type: "clearDrawing" });
     },
   };

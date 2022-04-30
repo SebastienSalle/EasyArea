@@ -33,6 +33,7 @@ function ShapeSelector(props) {
                 length: "",
                 width: "",
                 area: "",
+                deduct: 1,
               });
               setIdCount(idCount + 1);
             }}
@@ -57,6 +58,7 @@ function ShapeSelector(props) {
                 height: "",
                 base: "",
                 area: "",
+                deduct: 1,
               });
               setIdCount(idCount + 1);
             }}
@@ -82,6 +84,7 @@ function ShapeSelector(props) {
                 base: "",
                 oppositeBase: "",
                 area: "",
+                deduct: 1,
               });
               setIdCount(idCount + 1);
             }}
@@ -105,6 +108,7 @@ function ShapeSelector(props) {
                 name: `Circle_${idCount}`,
                 radius: "",
                 area: "",
+                deduct: 1,
               });
               setIdCount(idCount + 1);
             }}
@@ -128,6 +132,7 @@ function ShapeSelector(props) {
                 name: `Square_${idCount}`,
                 length: "",
                 area: "",
+                deduct: 1,
               });
               setIdCount(idCount + 1);
             }}
@@ -150,6 +155,7 @@ function ShapeSelector(props) {
                 title: "",
                 name: `Area_${idCount}`,
                 area: "",
+                deduct: 1,
               });
               setIdCount(idCount + 1);
             }}

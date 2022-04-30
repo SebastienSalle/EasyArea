@@ -38,7 +38,7 @@ function Header(props) {
   let totalArea = 0;
   let i = 0;
   while (i < props.cards.length) {
-    totalArea += Number(props.cards[i].area);
+    totalArea += Number(props.cards[i].area) * Number(props.cards[i].deduct);
     i++;
   }
 
@@ -66,7 +66,7 @@ function Header(props) {
               `area: ${e.area}${unit}²`,
               "",
               "",
-              `total: ${Number(e.area).toFixed(2)}${unit}²`,
+              `total: ${Number(e.area) * e.deduct.toFixed(2)}${unit}²`,
             ],
           ]);
         case "circle":
@@ -78,7 +78,7 @@ function Header(props) {
               `radius: ${e.radius}${unit}`,
               "",
               "",
-              `total: ${Number(e.area).toFixed(2)}${unit}²`,
+              `total: ${Number(e.area) * e.deduct.toFixed(2)}${unit}²`,
             ],
           ]);
         case "square":
@@ -90,7 +90,7 @@ function Header(props) {
               `length: ${e.length}${unit}`,
               "",
               "",
-              `total: ${Number(e.area).toFixed(2)}${unit}²`,
+              `total: ${Number(e.area) * e.deduct.toFixed(2)}${unit}²`,
             ],
           ]);
         case "rectangle":
@@ -102,7 +102,7 @@ function Header(props) {
               `width: ${e.width}${unit}`,
               `length: ${e.length}${unit}`,
               "",
-              `total: ${Number(e.area).toFixed(2)}${unit}²`,
+              `total: ${Number(e.area) * e.deduct.toFixed(2)}${unit}²`,
             ],
           ]);
         case "triangle":
@@ -114,7 +114,7 @@ function Header(props) {
               `base: ${e.base}${unit}`,
               `height: ${e.height}${unit}`,
               "",
-              `total: ${Number(e.area).toFixed(2)}${unit}²`,
+              `total: ${Number(e.area) * e.deduct.toFixed(2)}${unit}²`,
             ],
           ]);
         case "trapezoid":
@@ -126,7 +126,7 @@ function Header(props) {
               `base: ${e.base}${unit}`,
               `op.base: ${e.oppositeBase}${unit}`,
               `height: ${e.height}${unit}`,
-              `total: ${Number(e.area).toFixed(2)}${unit}²`,
+              `total: ${Number(e.area) * e.deduct.toFixed(2)}${unit}²`,
             ],
           ]);
         default:
@@ -134,10 +134,15 @@ function Header(props) {
       }
     });
 
-    // console.log('RES ',[result])
     return result;
   };
   const dd = {
+    info: {
+      title:
+        props.paint.label === ""
+          ? `EasyArea-${timeMarker}`
+          : `EasyArea-${props.paint.label}-${timeMarker}`,
+    },
     content: [
       {
         style: "tableArea",
@@ -160,7 +165,7 @@ function Header(props) {
         style: "subheader",
       },
 
-      { text: "Schema", style: "subheader", margin: [0, 20, 0, 8] },
+      { text: "Sketch", style: "subheader", margin: [0, 20, 0, 8] },
       { image: props.drawing, fit: [400, 300], alignment: "center" },
 
       { text: "Details", style: "subheader" },
@@ -173,7 +178,11 @@ function Header(props) {
         },
         layout: "lightHorizontalLines",
       },
-      { text: "Paint", style: "subheader" },
+      {
+        text:
+          props.paint.label === "" ? "Paint" : `Paint: ${props.paint.label}`,
+        style: "subheader",
+      },
       {
         style: "tableArea",
         table: {
@@ -227,7 +236,15 @@ function Header(props) {
 
   const pdfExported = () => {
     setExportPDF(true);
-    pdfMake.createPdf(dd).download(`EasyArea-${timeMarker}`);
+    const win = window.open("", "_blank");
+    pdfMake
+      .createPdf(dd)
+      .download(
+        props.paint.label === ""
+          ? `EasyArea-${timeMarker}`
+          : `EasyArea-${props.paint.label}-${timeMarker}`
+      );
+    win.close();
     setTimeout(() => {
       setExportPDF(false);
     }, 200);
@@ -236,7 +253,6 @@ function Header(props) {
   // const [exportCSV, setExportCSV] = useState(false);
   // const csvColor = exportCSV ? "#A3CB38" : "#fff";
   // const csvExported = () => {
-  //   console.log("CSV-Ploup");
 
   //   setExportCSV(true);
   //   setTimeout(() => {

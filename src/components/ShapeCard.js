@@ -15,7 +15,11 @@ import {
   Input,
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark, faCubesStacked } from "@fortawesome/free-solid-svg-icons";
+import {
+  faXmark,
+  faCubesStacked,
+  faSquareMinus,
+} from "@fortawesome/free-solid-svg-icons";
 
 function ShapeCard(props) {
   const data = props.data;
@@ -24,11 +28,15 @@ function ShapeCard(props) {
   let messageNoShape;
   if (data.length === 0) {
     messageNoShape = (
-      <div style={{ color: "#1289A7" }}>Add a SHAPE to start</div>
+      <div style={{ color: "#1289A7" }}>
+        Add a SHAPE to start AREA calculation
+      </div>
     );
   }
 
   const createCards = data.map((e, i) => {
+    let deducter = 1;
+
     switch (e.type) {
       case "square":
         return (
@@ -44,7 +52,6 @@ function ShapeCard(props) {
                   <CardTitle>
                     <Input
                       autoFocus
-                      tabIndex={1}
                       placeholder={`Square ${i + 1}`}
                       style={styles.title}
                       key={i}
@@ -72,10 +79,21 @@ function ShapeCard(props) {
                 </Col>
                 <Col xs="9" md="6">
                   <CardSubtitle style={styles.subTtl}>
-                    Area: {Number(e.area).toFixed(2)} {props.unit}²
+                    {console.log(e)}
+                    Area:
+                    <FontAwesomeIcon
+                      style={styles.minus}
+                      icon={faSquareMinus}
+                      color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
+                      onClick={(e) => {
+                        e.deduct === -1 ? (deducter = 1) : (deducter = -1);
+                        props.onDeductArea(i, e.deduct);
+                      }}
+                    />
+                    {Number(e.area).toFixed(2)}
+                    {props.unit}²
                   </CardSubtitle>
                 </Col>
-                
               </Row>
               <Row>
                 <Col className="d-none d-md-block">
@@ -92,7 +110,6 @@ function ShapeCard(props) {
                     <InputGroupText>L</InputGroupText>
 
                     <Input
-                      tabIndex={2}
                       key={i}
                       name={e.name}
                       data-type={e.type}
@@ -105,6 +122,7 @@ function ShapeCard(props) {
                           L: e.target.value,
                           type: e.target.dataset.type,
                           index: i,
+                          deducter: e.deduct,
                         });
                       }}
                       value={e.length}
@@ -158,10 +176,20 @@ function ShapeCard(props) {
                 </Col>
                 <Col xs="9" md="6">
                   <CardSubtitle style={styles.subTtl}>
-                    Area: {Number(e.area).toFixed(2)} {props.unit}²
+                    Area:
+                    <FontAwesomeIcon
+                      style={styles.minus}
+                      icon={faSquareMinus}
+                      color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
+                      onClick={(e) => {
+                        e.deduct === -1 ? (deducter = 1) : (deducter = -1);
+                        props.onDeductArea(i, e.deduct);
+                      }}
+                    />
+                    {Number(e.area).toFixed(2)}
+                    {props.unit}²
                   </CardSubtitle>
                 </Col>
-                
               </Row>
               <Row>
                 <Col className="d-none d-md-block">
@@ -264,10 +292,20 @@ function ShapeCard(props) {
                 </Col>
                 <Col xs="9" md="6">
                   <CardSubtitle style={styles.subTtl}>
-                    Area: {Number(e.area).toFixed(2)} {props.unit}²
+                    Area:
+                    <FontAwesomeIcon
+                      style={styles.minus}
+                      icon={faSquareMinus}
+                      color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
+                      onClick={(e) => {
+                        e.deduct === -1 ? (deducter = 1) : (deducter = -1);
+                        props.onDeductArea(i, e.deduct);
+                      }}
+                    />
+                    {Number(e.area).toFixed(2)}
+                    {props.unit}²
                   </CardSubtitle>
                 </Col>
-                
               </Row>
               <Row>
                 <Col className="d-none d-md-block">
@@ -393,7 +431,18 @@ function ShapeCard(props) {
                 </Col>
                 <Col xs="9" md="6">
                   <CardSubtitle style={styles.subTtl}>
-                    Area: {Number(e.area).toFixed(2)} {props.unit}²
+                    Area:
+                    <FontAwesomeIcon
+                      style={styles.minus}
+                      icon={faSquareMinus}
+                      color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
+                      onClick={(e) => {
+                        e.deduct === -1 ? (deducter = 1) : (deducter = -1);
+                        props.onDeductArea(i, e.deduct);
+                      }}
+                    />
+                    {Number(e.area).toFixed(2)}
+                    {props.unit}²
                   </CardSubtitle>
                 </Col>
               </Row>
@@ -499,7 +548,18 @@ function ShapeCard(props) {
                 </Col>
                 <Col xs="9" md="6">
                   <CardSubtitle style={styles.subTtl}>
-                    Area: {Number(e.area).toFixed(2)} {props.unit}²
+                    Area:
+                    <FontAwesomeIcon
+                      style={styles.minus}
+                      icon={faSquareMinus}
+                      color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
+                      onClick={(e) => {
+                        e.deduct === -1 ? (deducter = 1) : (deducter = -1);
+                        props.onDeductArea(i, e.deduct);
+                      }}
+                    />
+                    {Number(e.area).toFixed(2)}
+                    {props.unit}²
                   </CardSubtitle>
                 </Col>
               </Row>
@@ -582,7 +642,18 @@ function ShapeCard(props) {
                 </Col>
                 <Col xs="9" md="6">
                   <CardSubtitle style={styles.subTtl}>
-                    Area: {Number(e.area).toFixed(2)} {props.unit}²
+                    Area:
+                    <FontAwesomeIcon
+                      style={styles.minus}
+                      icon={faSquareMinus}
+                      color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
+                      onClick={(e) => {
+                        e.deduct === -1 ? (deducter = 1) : (deducter = -1);
+                        props.onDeductArea(i, e.deduct);
+                      }}
+                    />
+                    {Number(e.area).toFixed(2)}
+                    {props.unit}²
                   </CardSubtitle>
                 </Col>
               </Row>
@@ -668,6 +739,9 @@ const styles = {
     height: "20px",
     color: "#ED4C67",
   },
+  minus: {
+    marginLeft: "5px",
+  },
   title: {
     width: "90%",
     borderColor: "#1289A7",
@@ -693,6 +767,13 @@ function mapDispatchToProps(dispatch) {
       dispatch({
         type: "title",
         value: t,
+      });
+    },
+    onDeductArea: function (index, ddctr) {
+      dispatch({
+        type: "deduct",
+        index: index,
+        deducter: ddctr,
       });
     },
   };

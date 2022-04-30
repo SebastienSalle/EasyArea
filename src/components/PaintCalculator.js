@@ -17,17 +17,21 @@ import {
   faPaintRoller,
   faLayerGroup,
   faFillDrip,
+  faTag,
 } from "@fortawesome/free-solid-svg-icons";
 
 function PaintCalcutor(props) {
   const [volume, setVolume] = useState("");
 
-  //10m²/L/couche
+  //e.g. formule 10m²/L/couche
   const [display, setDisplay] = useState(false);
-
+  const [paintName, setPaintName] = useState("");
   const [paintYield, setPaintYield] = useState("");
-
   const [coat, setCoat] = useState("");
+
+  const onPaintLabel = (labelName) => {
+    props.handlePaintName(labelName);
+  };
 
   const calculateVolume = (t, y, c) => {
     let newVolume;
@@ -37,10 +41,44 @@ function PaintCalcutor(props) {
     return newVolume;
   };
 
+  let volumeMessage = "";
+  if (coat * paintYield !== 0 && Number(props.surface) === 0) {
+    volumeMessage = "What would you paint on?";
+  } else if (coat * paintYield === 0 && Number(props.surface) !== 0) {
+    volumeMessage = "Paint data unavailable";
+  } else if (volume === 0 && Number(props.surface) === 0) {
+    volumeMessage = "Enter Paint data please";
+  } else if (Number(props.surface) > 0) {
+    volumeMessage = `Requires: ${Number(
+      (Number(props.surface) / paintYield) * coat
+    ).toFixed(2)}L`;
+  } else if (Number(props.surface) < 0) {
+    volumeMessage = "You'll try to paint a negative surface";
+  } else {
+    volumeMessage = "Nothing to paint on";
+  }
+
   const settings = () => {
     if (display) {
       return (
         <Row>
+          <div>
+            <InputGroup>
+              <InputGroupText>
+                <FontAwesomeIcon icon={faTag} color="#1B1464" />
+              </InputGroupText>
+              <Input
+                type="text"
+                placeholder="enter label name"
+                style={{ color: "#1289A7" }}
+                onChange={(e) => {
+                  setPaintName(e.target.value);
+                  onPaintLabel(e.target.value);
+                }}
+                value={paintName}
+              />
+            </InputGroup>
+          </div>
           <div>
             <FontAwesomeIcon
               style={{
@@ -52,33 +90,42 @@ function PaintCalcutor(props) {
             <InputGroup>
               <Input
                 type="number"
-                placeholder="10"
+                placeholder="e.g. 10"
                 min="1"
+                style={{ color: "#1289A7" }}
                 onChange={(e) => {
                   setPaintYield(e.target.value);
                   calculateVolume(props.surface, e.target.value, coat);
                 }}
               />
-              <InputGroupText>{props.unit.name}²/L</InputGroupText>
+              <InputGroupText style={{ color: "#1B1464" }}>
+                {props.unit.name}²/L
+              </InputGroupText>
             </InputGroup>
           </div>
           <div>
-            <FontAwesomeIcon
-              style={{
-                marginRight: "5px",
-              }}
-              icon={faLayerGroup}
-            />
-            Coat{coat > 1 ? `s:` : `:`}
-            <Input
-              type="number"
-              placeholder="1"
-              min="1"
-              onChange={(e) => {
-                setCoat(e.target.value);
-                calculateVolume(props.surface, paintYield, e.target.value);
-              }}
-            />
+            <InputGroup>
+              <InputGroupText style={{ color: "#1B1464" }}>
+                <FontAwesomeIcon
+                  style={{
+                    marginRight: "5px",
+                  }}
+                  icon={faLayerGroup}
+                  color="#1B1464"
+                />
+                Coat{coat > 1 ? `s:` : `:`}
+              </InputGroupText>
+              <Input
+                type="number"
+                placeholder="e.g. 1"
+                min="1"
+                style={{ color: "#1289A7" }}
+                onChange={(e) => {
+                  setCoat(e.target.value);
+                  calculateVolume(props.surface, paintYield, e.target.value);
+                }}
+              />
+            </InputGroup>
             <Badge
               color="warning"
               style={{
@@ -88,11 +135,7 @@ function PaintCalcutor(props) {
                 width: "100%",
               }}
             >
-              {volume > 0
-                ? `Requires: ${Number(
-                    (Number(props.surface) / paintYield) * coat
-                  ).toFixed(2)}L`
-                : "No data "}
+              {volumeMessage}
             </Badge>
           </div>
         </Row>
@@ -149,6 +192,12 @@ function mapDispatchToProps(dispatch) {
         value: newVolume,
         paintYield: paintYield,
         coat: coat,
+      });
+    },
+    handlePaintName: function (labelName) {
+      dispatch({
+        type: "label",
+        value: labelName,
       });
     },
   };

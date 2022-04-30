@@ -27,7 +27,6 @@ function DrawingCanvas(props) {
       setClean(false);
     }, 200);
   };
-  console.log(window.pageXOffset, window.pageYOffset);
 
   useEffect(() => {
     const canvas = document.getElementById("canvas");
@@ -85,7 +84,6 @@ function DrawingCanvas(props) {
       isPainting = false;
       ctx.stroke();
       ctx.beginPath();
-      console.log("URL ", canvas.toDataURL());
       props.onDrawing(canvas.toDataURL());
     });
 
@@ -119,7 +117,7 @@ function DrawingCanvas(props) {
                   title="line width"
                   icon={faSquarePen}
                 />
-
+                Room Sketch
                 <Input
                   id="lineWidth"
                   name="lineWidth"
@@ -130,9 +128,9 @@ function DrawingCanvas(props) {
                     width: "80px",
                     lineHeight: "5px",
                     fontSize: "15px",
+                    marginLeft: "5px",
                   }}
                 />
-
                 <input
                   id="stroke"
                   name="stroke"
@@ -184,11 +182,9 @@ function DrawingCanvas(props) {
 function mapDispatchToProps(dispatch) {
   return {
     onDrawing: function (url) {
-      console.log("Drawing ", url);
       dispatch({ type: "updateDrawing", url: url });
     },
     onClear: function (url) {
-      console.log("ClearedURL ", url);
       dispatch({ type: "clearDrawing" });
     },
   };

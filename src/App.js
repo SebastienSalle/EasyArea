@@ -29,10 +29,6 @@ function App() {
       <div>
         <Header />
         <Row style={{ backgroundColor: "#e9e9e9" }}>
-          <Col lg="6" className="d-none d-lg-block">
-            <DrawingCanvas />
-          </Col>
-
           <Col lg="6">
             <Row>
                 <Col>
@@ -40,13 +36,11 @@ function App() {
                 </Col>
             </Row>
             <ShapesList />
-            {/* <ShapesList cards={cards} unit={unit} /> */}
             <Row>
             <Col xs="5" >
                   <UnitSelector />
-                  {/* <UnitSelector onChangeParentUnit={souvenirParentUnit} /> */}
             </Col>
-            <Col  >
+            <Col xs="12" md="6" >
               <PaintCalculator />
             </Col>
             </Row>
@@ -55,8 +49,11 @@ function App() {
           {/* <Col lg="6" className="d-block d-lg-none">
             <DrawingPopup />
           </Col> */}
+          <Col lg="6" className="d-none d-lg-block">
+            <DrawingCanvas />
+          </Col>
 
-          <Col className="text-center mb-3" style={{ fontSize: "10px" }}>
+          <Col className="text-center mb-3 mt-5" style={{ fontSize: "10px" }}>
             Created by{" "}
             <a
               href="https://www.linkedin.com/in/sebastien-salle-ab15058a/"
@@ -84,6 +81,7 @@ function App() {
               open source project
             </a>
           </Col>
+          
         </Row>
       </div>
     </Provider>

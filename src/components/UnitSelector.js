@@ -77,14 +77,12 @@ function UnitSelector(props) {
 }
 
 function mapStateToProps(state) {
-  console.log("mapStateUsel ", state.units);
   return { cards: state.shapes, units: state.units };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     onUnitChange: function (data) {
-      console.log("UnitSel ", data);
       dispatch({ type: "selectUnit", u: data });
     },
     convertValue: function (u, newU) {
