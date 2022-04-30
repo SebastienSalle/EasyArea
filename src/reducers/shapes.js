@@ -23,8 +23,7 @@ export default function shapes(shapes = [], action) {
           (newShapes[Number(action.value.index)].area = Math.pow(
             action.value.L,
             2
-          )), //* newShapes[Number(action.value.index)].deduct),
-          // ) * Number(action.value.deducter)),
+          )),
           newShapes
         );
 
@@ -238,14 +237,9 @@ export default function shapes(shapes = [], action) {
     }
   } else if (action.type === "deduct") {
     const newShapes = [...shapes];
-    // newShapes[Number(action.index)].deduct === -1?
-    newShapes[Number(action.index)].deduct < 0 ?
-    // action.deducter < 0 ?
-    newShapes[Number(action.index)].deduct = Number(1):
-    newShapes[Number(action.index)].deduct = Number(-1);
-    //OK but not enough to update total area and keep minus on the designated area
-    // newShapes[Number(action.index)].area = (newShapes[Number(action.index)].area * Number(action.deducter));
-    //newShapes[Number(action.index)].area = newShapes[Number(action.index)].area * newShapes[Number(action.index)].deduct;
+    newShapes[Number(action.index)].deduct < 0
+      ? (newShapes[Number(action.index)].deduct = Number(1))
+      : (newShapes[Number(action.index)].deduct = Number(-1));
     return newShapes;
   } else {
     return shapes;

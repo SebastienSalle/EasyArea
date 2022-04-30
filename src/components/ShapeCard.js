@@ -35,8 +35,6 @@ function ShapeCard(props) {
   }
 
   const createCards = data.map((e, i) => {
-    let deducter = 1;
-
     switch (e.type) {
       case "square":
         return (
@@ -86,7 +84,6 @@ function ShapeCard(props) {
                       icon={faSquareMinus}
                       color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
                       onClick={(e) => {
-                        e.deduct === -1 ? (deducter = 1) : (deducter = -1);
                         props.onDeductArea(i, e.deduct);
                       }}
                     />
@@ -182,7 +179,6 @@ function ShapeCard(props) {
                       icon={faSquareMinus}
                       color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
                       onClick={(e) => {
-                        e.deduct === -1 ? (deducter = 1) : (deducter = -1);
                         props.onDeductArea(i, e.deduct);
                       }}
                     />
@@ -298,7 +294,6 @@ function ShapeCard(props) {
                       icon={faSquareMinus}
                       color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
                       onClick={(e) => {
-                        e.deduct === -1 ? (deducter = 1) : (deducter = -1);
                         props.onDeductArea(i, e.deduct);
                       }}
                     />
@@ -437,7 +432,6 @@ function ShapeCard(props) {
                       icon={faSquareMinus}
                       color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
                       onClick={(e) => {
-                        e.deduct === -1 ? (deducter = 1) : (deducter = -1);
                         props.onDeductArea(i, e.deduct);
                       }}
                     />
@@ -554,7 +548,6 @@ function ShapeCard(props) {
                       icon={faSquareMinus}
                       color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
                       onClick={(e) => {
-                        e.deduct === -1 ? (deducter = 1) : (deducter = -1);
                         props.onDeductArea(i, e.deduct);
                       }}
                     />
@@ -648,7 +641,6 @@ function ShapeCard(props) {
                       icon={faSquareMinus}
                       color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
                       onClick={(e) => {
-                        e.deduct === -1 ? (deducter = 1) : (deducter = -1);
                         props.onDeductArea(i, e.deduct);
                       }}
                     />

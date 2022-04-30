@@ -31,21 +31,21 @@ function App() {
         <Row style={{ backgroundColor: "#e9e9e9" }}>
           <Col lg="6">
             <Row>
-                <Col>
-                  <ShapeSelector />
-                </Col>
+              <Col>
+                <ShapeSelector />
+              </Col>
             </Row>
             <ShapesList />
             <Row>
-            <Col xs="5" >
-                  <UnitSelector />
-            </Col>
-            <Col xs="12" md="6" >
-              <PaintCalculator />
-            </Col>
+              <Col xs="5">
+                <UnitSelector />
+              </Col>
+              <Col xs="12" md="6">
+                <PaintCalculator />
+              </Col>
             </Row>
           </Col>
-          
+
           {/* <Col lg="6" className="d-block d-lg-none">
             <DrawingPopup />
           </Col> */}
@@ -81,7 +81,6 @@ function App() {
               open source project
             </a>
           </Col>
-          
         </Row>
       </div>
     </Provider>

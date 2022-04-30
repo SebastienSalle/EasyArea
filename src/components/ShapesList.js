@@ -15,9 +15,11 @@ function ShapesList(props) {
       case "rectangle":
         return Number(e.length * e.width).toFixed(2) * e.deduct;
       case "trapezoid":
-        return Number(
-          ((Number(e.base) + Number(e.oppositeBase)) * e.height) / 2
-        ).toFixed(2) * e.deduct;
+        return (
+          Number(
+            ((Number(e.base) + Number(e.oppositeBase)) * e.height) / 2
+          ).toFixed(2) * e.deduct
+        );
       case "triangle":
         return Number((e.base * e.height) / 2).toFixed(2) * e.deduct;
       case "circle":
