@@ -280,6 +280,7 @@ function Header(props) {
       <Nav>
         <NavItem>
           <Input
+            autoFocus
             type="text"
             placeholder="enter project name"
             style={{ color: "#1289A7" }}

@@ -68,6 +68,7 @@ function PaintCalcutor(props) {
                 <FontAwesomeIcon icon={faTag} color="#1B1464" />
               </InputGroupText>
               <Input
+                autoFocus
                 type="text"
                 placeholder="enter label name"
                 style={{ color: "#1289A7" }}

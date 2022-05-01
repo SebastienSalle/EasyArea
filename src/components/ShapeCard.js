@@ -49,7 +49,6 @@ function ShapeCard(props) {
                 <Col sm="6">
                   <CardTitle>
                     <Input
-                      autoFocus
                       placeholder={`Square ${i + 1}`}
                       style={styles.title}
                       key={i}
@@ -107,6 +106,7 @@ function ShapeCard(props) {
                     <InputGroupText>L</InputGroupText>
 
                     <Input
+                      autoFocus
                       key={i}
                       name={e.name}
                       data-type={e.type}
@@ -145,7 +145,6 @@ function ShapeCard(props) {
                 <Col sm="6">
                   <CardTitle>
                     <Input
-                      autoFocus
                       placeholder={`Rectangle ${i + 1}`}
                       style={styles.title}
                       key={i}
@@ -201,6 +200,7 @@ function ShapeCard(props) {
                     <InputGroupText>L</InputGroupText>
 
                     <Input
+                      autoFocus
                       key={i}
                       name={e.name}
                       data-type={e.type}
@@ -260,7 +260,6 @@ function ShapeCard(props) {
                 <Col xs="11" sm="6">
                   <CardTitle>
                     <Input
-                      autoFocus
                       placeholder={`Trapezoid ${i + 1}`}
                       style={styles.title}
                       key={i}
@@ -316,6 +315,7 @@ function ShapeCard(props) {
                     <InputGroupText>B</InputGroupText>
 
                     <Input
+                      autoFocus
                       key={i}
                       name={e.name}
                       data-type={e.type}
@@ -398,7 +398,6 @@ function ShapeCard(props) {
                 <Col sm="6">
                   <CardTitle>
                     <Input
-                      autoFocus
                       placeholder={`Triangle ${i + 1}`}
                       style={styles.title}
                       key={i}
@@ -454,6 +453,7 @@ function ShapeCard(props) {
                     <InputGroupText>B</InputGroupText>
 
                     <Input
+                      autoFocus
                       key={i}
                       name={e.name}
                       data-type={e.type}
@@ -513,7 +513,6 @@ function ShapeCard(props) {
                 <Col sm="6">
                   <CardTitle>
                     <Input
-                      autoFocus
                       placeholder={`Circle ${i + 1}`}
                       style={styles.title}
                       key={i}
@@ -570,6 +569,7 @@ function ShapeCard(props) {
                   <InputGroup size="sm">
                     <InputGroupText>r</InputGroupText>
                     <Input
+                      autoFocus
                       key={i}
                       name={e.name}
                       data-type={e.type}
@@ -606,7 +606,6 @@ function ShapeCard(props) {
                 <Col sm="6">
                   <CardTitle>
                     <Input
-                      autoFocus
                       placeholder={`${i + 1}: CustomArea`}
                       style={styles.title}
                       key={i}
@@ -666,6 +665,7 @@ function ShapeCard(props) {
                   <InputGroup size="sm">
                     <InputGroupText>A</InputGroupText>
                     <Input
+                      autoFocus
                       key={i}
                       name={e.name}
                       data-type={e.type}
