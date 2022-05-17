@@ -24,7 +24,7 @@ import {
 function ShapeCard(props) {
   const data = props.data;
 
-  //Create a card for each item
+  //-----Create a card for each item
   let messageNoShape;
   if (data.length === 0) {
     messageNoShape = (
