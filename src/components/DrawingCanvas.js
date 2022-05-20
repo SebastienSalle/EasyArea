@@ -71,6 +71,7 @@ function DrawingCanvas(props) {
       }
       ctx.lineWidth = lineWidth;
       ctx.lineCap = "round";
+      ctx.lineJoin = "round";
 
       ctx.lineTo(e.clientX - canvasOffsetX, e.clientY - canvasOffsetY);
       ctx.stroke();
