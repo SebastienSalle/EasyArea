@@ -94,20 +94,23 @@ function DrawingCanvas(props) {
   // ------
   return (
     <Container>
+        {/* <div> */}
       <Row>
-        <Col>
+        <Col >
+
           <Card
-            className="mb-1 mt-2"
+            className="mb-1"
             style={{
               boxShadow: "0 10px 20px rgba(0, 0, 0, 0.25)",
+              // marginTop:"50px",
               height: "600px",
             }}
-          >
+            >
             <CardHeader
               id="toolbar"
               style={{ color: "#fff", backgroundColor: "#1B1464" }}
               className="d-flex d-row align-items-center justify-content-between"
-            >
+              >
               <div className="d-flex d-row align-items-center">
                 <FontAwesomeIcon
                   style={{
@@ -117,7 +120,7 @@ function DrawingCanvas(props) {
                   color={penColor}
                   title="line width"
                   icon={faSquarePen}
-                />
+                  />
                 Room Sketch
                 <Input
                   id="lineWidth"
@@ -131,7 +134,7 @@ function DrawingCanvas(props) {
                     fontSize: "15px",
                     marginLeft: "5px",
                   }}
-                />
+                  />
                 <input
                   id="stroke"
                   name="stroke"
@@ -140,7 +143,7 @@ function DrawingCanvas(props) {
                   onChange={(e) => {
                     setPenColor(e.target.value);
                   }}
-                />
+                  />
               </div>
               <div className="d-flex align-items-center">
                 <FontAwesomeIcon
@@ -151,7 +154,7 @@ function DrawingCanvas(props) {
                   }}
                   title="clean the board"
                   icon={faHandsBubbles}
-                />
+                  />
                 <Button
                   id="clear"
                   style={{
@@ -159,7 +162,7 @@ function DrawingCanvas(props) {
                     color: `${cleanColor}`,
                     cursor: "pointer",
                   }}
-                >
+                  >
                   Clear
                 </Button>
               </div>
@@ -168,7 +171,7 @@ function DrawingCanvas(props) {
             <CardBody
               id="canvasCard"
               style={{ padding: 0, cursor: "crosshair" }}
-            >
+              >
               <canvas id="canvas">
                 Sorry the canvas is not supported by your browser
               </canvas>
@@ -176,6 +179,7 @@ function DrawingCanvas(props) {
           </Card>
         </Col>
       </Row>
+              {/* </div> */}
     </Container>
   );
 }

@@ -28,14 +28,18 @@ function App() {
   return (
     <Provider store={store}>
       <div>
-        <Header />
-        <Row style={{ backgroundColor: "#e9e9e9" }}>
+        <Header/>
+        <Row style={{ backgroundColor: "#e9e9e9"}} height="100%">
           <Col lg="6">
+          <div className="sticky-top">
             <Row>
               <Col>
+              
                 <ShapeSelector />
+
               </Col>
             </Row>
+            </div>
             <ShapesList />
             <Row>
               <Col xs="5">
@@ -51,7 +55,10 @@ function App() {
             <DrawingPopup />
           </Col> */}
           <Col lg="6" className="d-none d-lg-block">
-            <DrawingCanvas />
+            {/* <div className="fixed top:50 right:0"> */}
+            <div className="sticky-top" style={{top:"70px", right:"20px"}}>
+            <DrawingCanvas/>
+            </div>
           </Col>
 
           <Col className="text-center mb-3 mt-5" style={{ fontSize: "10px" }}>

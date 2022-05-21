@@ -65,7 +65,7 @@ function ShapesList(props) {
               scroll: true,
             }}
           >
-            <CardHeader style={{ color: "#fff", backgroundColor: "#1B1464" }}>
+            <CardHeader style={{ color: "#fff", backgroundColor: "#1B1464"}}>
               <span
                 onClick={copy}
                 style={{
