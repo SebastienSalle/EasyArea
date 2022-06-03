@@ -71,6 +71,7 @@ function DrawingPopup(props) {
       }
       ctx.lineWidth = lineWidth;
       ctx.lineCap = "round";
+      ctx.lineJoin = "round";
 
       ctx.lineTo(e.clientX - canvasOffsetX, e.clientY - canvasOffsetY);
       ctx.stroke();
@@ -78,6 +79,7 @@ function DrawingPopup(props) {
 
     canvas.addEventListener("pointerdown", (e) => {
       isPainting = true;
+      console.log()
     });
 
     canvas.addEventListener("pointerup", (e) => {
@@ -100,7 +102,8 @@ function DrawingPopup(props) {
             className="mb-1 mt-2"
             style={{
               boxShadow: "0 10px 20px rgba(0, 0, 0, 0.25)",
-              height: "600px",
+              height: "80vh",
+              overflowY: 'hidden'
             }}
           >
             <CardHeader
@@ -179,6 +182,25 @@ function DrawingPopup(props) {
     </Container>
   );
 }
+
+// const styles = {
+//   overlay: {
+//   position: 'fixed',
+//   width: '100%',
+//   height: '100%',
+//   top: 0,
+//   left: 0,
+//   right: 0,
+//   bottom: 0,
+//   backgroundColor: 'rgba(0,0,0,0.5)',
+//   zIndex: 2,
+//   cursor: 'pointer',
+//   display: 'flex',
+//   flexDirection: 'column',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+//   },
+// };
 
 function mapDispatchToProps(dispatch) {
   return {
