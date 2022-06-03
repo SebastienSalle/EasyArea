@@ -2,7 +2,11 @@
 // rather than show don't show, maybe hide don't hide in order to not loose the drawing...
 import React, { useState } from "react";
 // import "./App.css";
-import { Row, Col, Button } from "reactstrap";
+import { 
+  Row,
+  Col, 
+  //Button
+ } from "reactstrap";
 
 import Header from "./components/Header";
 import DrawingCanvas from "./components/DrawingCanvas";
@@ -27,8 +31,9 @@ const store = createStore(
 );
 
 function App() {
+/*
   const [zCanvas, setZCanvas] = useState(0);
-  const [showCanvas, setShowCanvas] = useState(false);
+  //const [showCanvas, setShowCanvas] = useState(false);
   const [stopScroll, setStopScroll] = useState("visible");
 
   const hideCanvas = () => {
@@ -39,6 +44,7 @@ function App() {
     console.log("zCanvas" + {zCanvas})
   };
   console.log("zCanvas", {zCanvas})
+*/
   // const toggleCanvas = () => {
   //   setShowCanvas(!showCanvas);
   //   if (stopScroll === "visible") {
