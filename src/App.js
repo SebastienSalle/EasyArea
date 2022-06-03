@@ -1,16 +1,14 @@
 // should put a "popup overlay" but
 // rather than show don't show, maybe hide don't hide in order to not loose the drawing...
-import React, { useState } from "react";
-// import "./App.css";
+import React from "react";
+
 import { 
   Row,
   Col, 
-  //Button
  } from "reactstrap";
 
 import Header from "./components/Header";
 import DrawingCanvas from "./components/DrawingCanvas";
-//import DrawingPopup from "./components/DrawingPopup";
 import ShapesList from "./components/ShapesList";
 import ShapeSelector from "./components/ShapeSelector";
 import UnitSelector from "./components/UnitSelector";
@@ -31,28 +29,6 @@ const store = createStore(
 );
 
 function App() {
-/*
-  const [zCanvas, setZCanvas] = useState(0);
-  //const [showCanvas, setShowCanvas] = useState(false);
-  const [stopScroll, setStopScroll] = useState("visible");
-
-  const hideCanvas = () => {
-    // setShowCanvas(!showCanvas);
-    console.log("Hello")
-    zCanvas === 0 ? setZCanvas(3) : setZCanvas(0);
-    stopScroll === "visible" ? setStopScroll("hidden") : setStopScroll("visible");
-    console.log("zCanvas" + {zCanvas})
-  };
-  console.log("zCanvas", {zCanvas})
-*/
-  // const toggleCanvas = () => {
-  //   setShowCanvas(!showCanvas);
-  //   if (stopScroll === "visible") {
-  //     setStopScroll("hidden");
-  //   } else {
-  //     setStopScroll("visible");
-  //   }
-  // };
 
   return (
     <Provider store={store}>
@@ -77,54 +53,10 @@ function App() {
                 <PaintCalculator />
               </Col>
             </Row>
-            {/* <Button
-              className="d-block d-lg-none"
-              style={{ width: "100vw" }}
-              onClick={() => hideCanvas()}
-              // onClick={() => toggleCanvas()}
-            >
-              Draw a memo
-            </Button> */}
+            
           </Col>
-          {/*}
-          {showCanvas && (
-            <div
-              className="fixed-top"
-              style={{
-                fixed: "top",
-                width: "100vw",
-                height: "100vh",
-                backgroundColor: "rgb(233,233,233)",
-                xIndex: {zCanvas}
-              }}
-            >
-              <Col className="d-block d-lg-none">
-                {// <div className="stick-top" style={{ top: "70px", right: "20px" }}> }
-                {// <div className="overlay"> }
-                <div
-                  className="fixed-top"
-                  style={{ width: "100vw", height: "100vh" }}
-                >
-                  <Button
-                    className="fixed-bottom"
-                    style={{ bottom: "10px", left: "10vw", width: "80vw" }}
-                    onClick={() => hideCanvas()}
-                    // onClick={() => toggleCanvas()}
-                  >
-                    Close Canvas
-                  </Button>
-                  <DrawingPopup
-                    className="d-block d-lg-none"
-                    id="popupCanvas"
-                  />
-                </div>
-                {// </div> }
-              </Col>
-            </div>
-           )} */}
-
+          
           <Col lg="6" className="d-none d-lg-block">
-            {/* <div className="fixed top:50 right:0"> */}
             <div className="sticky-top" style={{ top: "70px", right: "20px" }}>
               <DrawingCanvas />
             </div>
