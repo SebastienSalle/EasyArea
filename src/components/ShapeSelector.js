@@ -11,6 +11,16 @@ function ShapeSelector(props) {
 
   return (
     <Container className="mt-2" style={{ textAlign: "center", backgroundColor: 'rgba(233,233,233,0.5)'}}>
+        <Row  
+        style={{
+          display: 'flex',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: "end",
+      alignItem: "center",
+      marginRight:"-5px"
+        }}
+        >
       <legend style={{ color: "#1B1464", marginTop:"7px", textAlign:'right'}}>
         <FontAwesomeIcon
           style={{
@@ -22,16 +32,6 @@ function ShapeSelector(props) {
         Add a shape
       </legend>
       
-      <Row className="sticky-top" 
-      style={{
-        display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: "end",
-    alignItem: "center",
-    marginRight:"-5px"
-      }}
-      >
           <Button
             onClick={() => {
               props.onAddClick({

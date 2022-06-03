@@ -282,7 +282,7 @@ function Header(props) {
           <Input
             autoFocus
             type="text"
-            placeholder="enter project name"
+            placeholder="Project Name"
             style={{ color: "#1289A7" }}
             onChange={(e) => {
               setProjectName(e.target.value);

@@ -32,18 +32,18 @@ function App() {
 
   return (
     <Provider store={store}>
-      <div style={{ overflowY: "hidden" }}>
+      <div style={{ overflowY: "scroll" }}>
         <Header/>
         <Row style={{ backgroundColor: "#e9e9e9" }} height="100%">
           <Col lg="6">
-            <div className="sticky-top">
-              <Row>
+            <div style={{top: "10px", position:'sticky', zIndex:3}}>
+              <Row >
                 <Col>
                   <ShapeSelector />
                 </Col>
               </Row>
+            <ShapesList/>
             </div>
-            <ShapesList />
 
             <Row>
               <Col xs="5">
@@ -57,7 +57,7 @@ function App() {
           </Col>
           
           <Col lg="6" className="d-none d-lg-block">
-            <div className="sticky-top" style={{ top: "70px", right: "20px" }}>
+            <div  style={{ top: "70px", right: "20px", position:'fixed', width:"50%" }}>
               <DrawingCanvas />
             </div>
           </Col>
