@@ -10,7 +10,7 @@ function ShapeSelector(props) {
   const [idCount, setIdCount] = useState(1);
 
   return (
-    <Container className="mt-2" style={{ textAlign: "center", backgroundColor: 'rgba(233,233,233,0.5)'}}>
+    <Container className="mt-2" style={{ textAlign: "center", backgroundColor: 'rgba(233,233,233,0.5)' }}>
         <Row  
         style={{
           display: 'flex',
@@ -18,7 +18,7 @@ function ShapeSelector(props) {
       flexWrap: 'wrap',
       justifyContent: "end",
       alignItem: "center",
-      marginRight:"-5px"
+      marginRight:"-5px",
         }}
         >
       <legend style={{ color: "#1B1464", marginTop:"7px", textAlign:'right'}}>
@@ -31,8 +31,8 @@ function ShapeSelector(props) {
         />
         Add a shape
       </legend>
-      
           <Button
+            data-testid='button-rectangle'
             onClick={() => {
               props.onAddClick({
                 idCard: idCount,
@@ -58,6 +58,7 @@ function ShapeSelector(props) {
               />
           </Button>
           <Button
+            data-testid='button-triangle'
             onClick={() => {
               props.onAddClick({
                 idCard: idCount,
@@ -83,6 +84,7 @@ function ShapeSelector(props) {
               />
           </Button>
           <Button
+            data-testid='button-trapezoid'
             onClick={() => {
               props.onAddClick({
                 idCard: idCount,
@@ -109,6 +111,7 @@ function ShapeSelector(props) {
               />
           </Button>
           <Button
+            data-testid='button-circle'
             onClick={() => {
               props.onAddClick({
                 idCard: idCount,
@@ -133,6 +136,7 @@ function ShapeSelector(props) {
               />
           </Button>
           <Button
+            data-testid='button-square'
             onClick={() => {
               props.onAddClick({
                 idCard: idCount,
@@ -143,7 +147,7 @@ function ShapeSelector(props) {
                 area: "",
                 deduct: 1,
               });
-              setIdCount(idCount + 1);
+             setIdCount(idCount + 1);
             }}
             title="add a square"
             style={styles.buttons}
@@ -157,6 +161,7 @@ function ShapeSelector(props) {
               />
           </Button>
           <Button
+            data-testid='button-area'
             onClick={() => {
               props.onAddClick({
                 idCard: idCount,
@@ -168,7 +173,7 @@ function ShapeSelector(props) {
               });
               setIdCount(idCount + 1);
             }}
-            title="add an area"
+            title="add a custom area"
             className="me-2 mb-2"
             style={styles.buttons}
             >
@@ -187,7 +192,7 @@ const styles = {
     size: "sm",
     color: "secondary",
     backgroundColor: "#A3CB38",
-    width: "44px",
+    width: "40px",
     height: "40px",
     display: 'flex',
     flexDirection: 'row',

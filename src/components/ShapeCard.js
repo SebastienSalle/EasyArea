@@ -23,7 +23,6 @@ import {
 
 function ShapeCard(props) {
   const data = props.data;
-
   //-----Create a card for each item
   let messageNoShape;
   if (data.length === 0) {
@@ -38,10 +37,12 @@ function ShapeCard(props) {
     switch (e.type) {
       case "square":
         return (
-          <Card key={i} className="mb-2" style={styles.cards}>
+          <Card key={i} className="mb-2" style={styles.cards} title='square-card'>
             <CardBody>
               <FontAwesomeIcon
                 style={styles.cross}
+                title="delete this card"
+                alt="cross icon"
                 icon={faXmark}
                 onClick={() => props.onDeleteClick(i)}
               />
@@ -76,10 +77,11 @@ function ShapeCard(props) {
                 </Col>
                 <Col xs="9" md="6">
                   <CardSubtitle style={styles.subTtl}>
-                    {console.log(e)}
                     Area:
                     <FontAwesomeIcon
                       style={styles.minus}
+                      title='switch -/+'
+                      alt='minus icon'
                       icon={faSquareMinus}
                       color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
                       onClick={(e) => {
@@ -133,11 +135,12 @@ function ShapeCard(props) {
         );
       case "rectangle":
         return (
-          <Card key={i} className="mb-2" style={styles.cards}>
+          <Card key={i} className="mb-2" style={styles.cards}  title='rectangle-card' id={`rectangle-`+i}>
             <CardBody>
               <FontAwesomeIcon
                 style={styles.cross}
                 title="delete this card"
+                alt="cross icon"
                 icon={faXmark}
                 onClick={() => props.onDeleteClick(i)}
               />
@@ -175,6 +178,8 @@ function ShapeCard(props) {
                     Area:
                     <FontAwesomeIcon
                       style={styles.minus}
+                      title='switch -/+'
+                      alt='minus icon'
                       icon={faSquareMinus}
                       color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
                       onClick={(e) => {
@@ -249,10 +254,12 @@ function ShapeCard(props) {
         );
       case "trapezoid":
         return (
-          <Card key={i} className="mb-2" style={styles.cards}>
+          <Card key={i} className="mb-2" style={styles.cards} title='trapezoid-card' id={`trapezoid-`+i}>
             <CardBody>
               <FontAwesomeIcon
                 style={styles.cross}
+                title="delete this card"
+                alt="cross icon"
                 icon={faXmark}
                 onClick={() => props.onDeleteClick(i)}
               />
@@ -290,6 +297,8 @@ function ShapeCard(props) {
                     Area:
                     <FontAwesomeIcon
                       style={styles.minus}
+                      title='switch -/+'
+                      alt='minus icon'
                       icon={faSquareMinus}
                       color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
                       onClick={(e) => {
@@ -387,10 +396,12 @@ function ShapeCard(props) {
         );
       case "triangle":
         return (
-          <Card key={i} className="mb-2" style={styles.cards}>
+          <Card key={i} className="mb-2" style={styles.cards} title='triangle-card' id={`triangle-`+i}>
             <CardBody>
               <FontAwesomeIcon
                 style={styles.cross}
+                title="delete this card"
+                alt="cross icon"
                 icon={faXmark}
                 onClick={() => props.onDeleteClick(i)}
               />
@@ -428,6 +439,8 @@ function ShapeCard(props) {
                     Area:
                     <FontAwesomeIcon
                       style={styles.minus}
+                      title='switch -/+'
+                      alt='minus icon'
                       icon={faSquareMinus}
                       color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
                       onClick={(e) => {
@@ -502,10 +515,12 @@ function ShapeCard(props) {
         );
       case "circle":
         return (
-          <Card key={i} className="mb-2" style={styles.cards}>
+          <Card key={i} className="mb-2" style={styles.cards} title='circle-card' id={`circle-`+i}>
             <CardBody>
               <FontAwesomeIcon
                 style={styles.cross}
+                title="delete this card"
+                alt="cross icon"
                 icon={faXmark}
                 onClick={() => props.onDeleteClick(i)}
               />
@@ -544,6 +559,8 @@ function ShapeCard(props) {
                     Area:
                     <FontAwesomeIcon
                       style={styles.minus}
+                      title='switch -/+'
+                      alt='minus icon'
                       icon={faSquareMinus}
                       color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
                       onClick={(e) => {
@@ -595,10 +612,12 @@ function ShapeCard(props) {
         );
       case "area":
         return (
-          <Card key={i} className="mb-2" style={styles.cards}>
+          <Card key={i} className="mb-2" style={styles.cards} title='area-card' id={`area-`+i}>
             <CardBody>
               <FontAwesomeIcon
                 style={styles.cross}
+                title="delete this card"
+                alt="cross icon"
                 icon={faXmark}
                 onClick={() => props.onDeleteClick(i)}
               />
@@ -637,6 +656,8 @@ function ShapeCard(props) {
                     Area:
                     <FontAwesomeIcon
                       style={styles.minus}
+                      title='switch -/+'
+                      alt='minus icon'
                       icon={faSquareMinus}
                       color={e.deduct === -1 ? "#FFC107" : "#e9e9e9"}
                       onClick={(e) => {
