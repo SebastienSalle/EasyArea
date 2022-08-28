@@ -95,7 +95,7 @@ function ShapesList(props) {
                 }}
               ></span>
             </CardHeader>
-            <CardBody style={{ overflowY: "scroll" }}>
+            <CardBody style={{ overflowY: "scroll", scrollSnapType: 'y mandatory' }}>
               <ShapeCard
                 data={props.cards}
                 unit={props.unit.name}

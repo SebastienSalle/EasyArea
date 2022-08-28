@@ -743,6 +743,7 @@ function ShapeCard(props) {
 const styles = {
   cards: {
     boxShadow: "0 0px 10px rgba(0, 0, 0, 0.25)",
+    scrollSnapAlign: 'start',
   },
   cross: {
     cursor: "pointer",
@@ -754,6 +755,7 @@ const styles = {
   },
   minus: {
     marginLeft: "5px",
+    cursor: 'pointer',
   },
   title: {
     width: "90%",
